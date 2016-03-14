@@ -21,6 +21,8 @@ public class Assets {
 	public Texture backgroundRear;
 	public Texture background;
 	public Texture diver;
+	public Texture ente;
+	public Texture wal;
 	//public TextureRegion backgroundRegion;
 	
 	/*
@@ -52,10 +54,12 @@ public class Assets {
 		System.out.println("Loading Assets..");
 		
 		backgroundFront  = loadTexture("background/BottomBackground.png");
-		backgroundMiddle = loadTexture("background/MainBackground.jpg");
+		backgroundMiddle = loadTexture("background/waterExpanded.png");
 		backgroundRear   = loadTexture("background/TopBackground 2.png");
 		background		 = loadTexture("background/backgroundExpanded.png");
 		diver 			 = loadTexture("diver/diver.png");
+		ente			 = loadTexture("ente.png");
+		wal				 = loadTexture("wal.png");
 		
 	}
 
