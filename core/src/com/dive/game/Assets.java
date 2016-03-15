@@ -58,9 +58,8 @@ public class Assets {
 		backgroundTop    = loadTexture("background/topBackground.png");
 		background		 = loadTexture("background/mainBackground.png");
 		diver 			 = loadTexture("diver/diver.png");
-		shark			 = loadTexture("background/myshark.png");
 		wal				 = loadTexture("wal.png");
-		shark			= loadTexture("myshark.png");
+		shark			= loadTexture("Hindernisse/myshark.png");
 		
 	}
 
