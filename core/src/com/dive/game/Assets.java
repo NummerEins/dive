@@ -51,6 +51,7 @@ public class Assets {
 	public Sound bite;
 	public Sound gasbottlehit;
 	public Sound boathit;
+	public Sound jellyfishhit;
 	public Sound startup;
 	public Texture animation;
 
@@ -125,7 +126,8 @@ public class Assets {
 		bite 			 = loadSound("sounds/Bite.wav");
 		gasbottlehit	 = loadSound("sounds/Gasbottlehit.wav");
 		boathit			 = loadSound("sounds/Boathit.wav");
-		//startup			 = loadSound("sounds/Startup.wav");
+		jellyfishhit	 = loadSound("sounds/Jellyfishhit.wav");
+		startup			 = loadSound("sounds/Startup.wav");
 		font 			 = new BitmapFont(Gdx.files.internal("fonts/StS.fnt"));
 		animation 		 = loadTexture("spritesheet/spritesheet.png");
 		
@@ -138,7 +140,7 @@ public class Assets {
 			t.dispose();
 		}
 		// dispose Sounds
-		Sound[] sounds = new Sound[]{bite, gasbottlehit, boathit};
+		Sound[] sounds = new Sound[]{bite, gasbottlehit, boathit, startup, jellyfishhit};
 		for(Sound s:sounds){
 			s.dispose();
 		}

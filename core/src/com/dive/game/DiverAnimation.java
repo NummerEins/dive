@@ -25,7 +25,7 @@ public class DiverAnimation {
                 animationRegion[index++] = animationSplitter[0][j];
             }
         
-        animation = new Animation(0.05f, animationRegion);
+        animation = new Animation(0.085f, animationRegion);
     }
 	public Animation getAnimation(){
 		return this.animation;

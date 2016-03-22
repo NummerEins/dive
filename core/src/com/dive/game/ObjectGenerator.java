@@ -192,6 +192,7 @@ public class ObjectGenerator {
 				e.setActive(false);
 				list.remove(e);
 				e.reset();
+				//System.out.println(e.alreadyhit);
 				e.getSprite().setX(1920);
 				e.getSprite()
 						.setY(minHeightWater
@@ -433,6 +434,7 @@ public class ObjectGenerator {
 		for (Jellyfish j : listJellyfish) {
 			j.getSprite().setX(-1000);
 			j.getShape().setX(-1000);
+			j.setAlreadyhit(false);
 			j.setActive(true);
 
 		}

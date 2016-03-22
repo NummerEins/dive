@@ -10,6 +10,7 @@ public class Plant extends GameObject {
 	private int ycord;
 	private Random rand;
 	private int sizePlant;
+	public boolean alreadyhit;
 
 	public Plant(int xcord) {
 		ycord = 20;
@@ -26,12 +27,14 @@ public class Plant extends GameObject {
 		reset();
 		
 		active = false;
+		alreadyhit = false;
 		type = ObjectType.PLANT;
 
 	}
 	
 	public void reset(){
 		sizePlant = 70 + rand.nextInt(90);
+		alreadyhit = false;
 		sprite.setSize(sizePlant + 120, sizePlant);
 		shape.setSize(sprite.getWidth(), sprite.getHeight());
 	}
