@@ -44,7 +44,7 @@ public class Joystick{
 		this.knob.setMinHeight(125);
 		
 		this.joystick = new Touchpad(5,joystickstyle);	//Joystick wird erstellt mit Bewegungsradius des Knüppels = 1/10 des Bildschirms
-		this.joystick.setBounds(0,  0 ,180, 180);//Größe und Platzierung des Joystickpads
+		this.joystick.setBounds(54,  5 ,180, 180);//Größe und Platzierung des Joystickpads
     	
 		
     	this.Checkboxskin = new Skin();	//Ein Skin wird erzeugt um aus Texture Dateien Drawables zu machen
