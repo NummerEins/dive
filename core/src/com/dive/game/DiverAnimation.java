@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class DiverAnimation {
 
-    private Animation animation;          // #3
-    private Texture animationTexture;              // #4
+    private Animation animation;
+    private Texture animationTexture;
     private TextureRegion[] animationRegion; 
     public float animationTimer;
  

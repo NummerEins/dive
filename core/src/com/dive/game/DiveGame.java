@@ -62,7 +62,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		gameState = new GameState(0);
 		newObjects = new ObjectGenerator(8,8,8,8,6,3,3, 0.1f);
 		parallax = new Parallax(0.03f);
-		world = new World(newObjects,0.1f,gameState, font);
+		world = new World(newObjects,0.1f,gameState, font, diverAnimation);
 		
 		//Joystick und Stage erzeugen
 		stage = new Stage();
