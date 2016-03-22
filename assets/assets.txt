@@ -14,6 +14,7 @@ i:Hindernisse/qualle.png:8420:image/png
 i:Hindernisse/green-plant.png:257902:image/png
 i:Hindernisse/Stone.png:25048:image/png
 i:Hindernisse/seastar.png:188479:image/png
+i:Hindernisse/Tauchflasche.png:8664:image/png
 i:Hindernisse/cargo_ship.png:741145:image/png
 d:joystick:0:application/unknown
 i:joystick/Joystickup.png:18725:image/png
@@ -37,6 +38,7 @@ i:background/vignet.png:503981:image/png
 i:background/black.png:146:image/png
 i:background/mainBackground.png:955174:image/png
 d:sounds:0:application/unknown
+a:sounds/Bite.wav:15418:audio/x-wav
 a:sounds/backgroundmusic.mp3:1441540:application/unknown
 d:fonts:0:application/unknown
 i:fonts/StS_0.png:15552:image/png

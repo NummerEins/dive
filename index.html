@@ -15,15 +15,16 @@
         	<h1>Save the Sea</h1>
         	<p>
         	Sammel Müll und rette damit das Meer. Umso mehr Müll du sammelst umso mehr Punkte bekommst du. <p>
-        	Achte aber auf die Haie und las dich nicht fressen. Was am Anfang noch einfach erscheint wird im Laufe des Spiels immer schwieriger. <p>
+        	Achte aber auf die Haie und lass dich nicht fressen. Was am Anfang noch einfach erscheint wird im Laufe des Spiels immer schwieriger. <p>
         	Erreiche einen neuen Highscore und spiele gegen deine Freunde. <p>
         	Dieses Spiel wurde im Rahmen des Softwareprojekts 2016 an der Freien Universität Berlin entwickelt. <p>
         	Mitgewirkt haben Aiko Pipo, Amandine Kaiser, Arthur Werckshagen, Lisa Gaedke-Merzhäuser, Maximilian Mozen, Tonn Rüter und Victor Jacob <p>
-        	<a href="https://github.com/NummerEins/dive">Unser GitHub Profil</a></p>
-            <p align="center" id="embed-html"></p>  
-            <!-- loads game-->
-            <script type="text/javascript" src="html/html.nocache.js"></script>	
-            </div>          
+        	<a href="https://github.com/NummerEins/dive">Unser GitHub Profil</a>
+        	<p>
+        	<a href="https://github.com/NummerEins/dive/wiki">Unsere Dokumentation</a>
+            </div>    
+            <p id="embed-html" align="center"></p>
+            <script type="text/javascript" src="html/html.nocache.js"></script>	   
        		<img src="assets/Hindernisse/green-plant.png" width="10%" height="5%" class="img1">
 			<img src="assets/Hindernisse/green-plant.png" width="10%" height="5%" class="img2">
        		<img src="assets/Hindernisse/green-plant.png" width="10%" height="5%" class="img3">
@@ -48,16 +49,18 @@
        				background: #aae0f0;
     				width: 100%;
 					height: 100%;
-					position: reltive;
 				}
+				#embed-html table {
+     				width:100%!important;
+     				height: auto!important;
+     				align: center;
+   				}
 				#embed-html table tbody tr td canvas{
-     				width:50%;
-     				height:50%; 
+     				width:70%;
+     				height:auto; 
      				border: 10px solid black;
      				top: 0;
-   				}
-   				#embed-html {
-   					background: #black;
+     				align: center;
    				}
    				.img1 {
 					position: fixed;
