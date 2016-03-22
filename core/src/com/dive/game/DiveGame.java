@@ -197,6 +197,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			gameState.toggle();
 			return true;
 		}
+		if(keycode == Keys.CONTROL_LEFT){world.setInfAir();}
 		for(InputProcessor p: processors){
 			p.keyDown(keycode);
 		}
@@ -207,8 +208,6 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		for(InputProcessor p: processors){
 			p.keyUp(keycode);
 		}
-		if(keycode == Keys.CONTROL_LEFT){world.setInfAir();}
-		else if(keycode == Keys.ENTER){gameState.resume();}
 		return false;
 	}
 	@Override

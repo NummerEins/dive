@@ -17,13 +17,13 @@ public class Assets {
 	
 	private static Assets instance = null;
 	
-	/*
-	 * 	TEXTUREN
-	 */
+	//Background
 	public Texture backgroundBottom;
 	public Texture backgroundMiddle;
 	public Texture backgroundTop;
 	public Texture background;
+	
+	//Objekte
 	public Texture diver;
 	public Texture shark;
 	public Texture jellyfish;
@@ -37,31 +37,35 @@ public class Assets {
 	public Texture boat;
 	public Texture cargoShip;
 	public Texture gasBottle;
-	public Texture black;
+	
+	//Buttons
 	public Texture restartButton;
 	public Texture restartButton_hover;
 	public Texture startButton;
+	public Texture startButton_hover;
 	public Texture menuButton;
+	public Texture menuButton_hover;
+	public Texture highscoreButton;
+	public Texture highscoreButton_hover;
+	
+	//air
 	public Texture air;
 	public Texture air_green;
 	public Texture air_orange;
 	public Texture air_red;
-	public BitmapFont font;
+	
+	//Sounds
 	public Music music;
 	public Sound bite;
 	public Sound gasbottlehit;
 	public Sound boathit;
 	public Sound jellyfishhit;
 	public Sound startup;
+	
+	//misc
+	public BitmapFont font;
 	public Texture animation;
-
-	
-	//public TextureRegion backgroundRegion;
-	
-	/*
-	 * 	SOUNDS
-	 */
-	//public Sound makeSomeNoise;
+	public Texture black;
 	
 	protected Assets() {
 		// Empty constructor
@@ -96,36 +100,40 @@ public class Assets {
 		
 		System.out.println("Loading Assets..");
 		
-		backgroundBottom = loadTexture("background/sandBackgrounds.png");
-		backgroundMiddle = loadTexture("background/mainBackground.png");
-		backgroundTop    = loadTexture("background/topBackground.png");
-		background		 = loadTexture("background/mainBackground.png");
-		diver 			 = loadTexture("diver/diver.png");
-		shark			 = loadTexture("Hindernisse/myshark.png");
-		jellyfish 		 = loadTexture("Hindernisse/qualle.png");
-		plant			 = loadTexture("Hindernisse/green-plant.png");
-		rock 			 = loadTexture("Hindernisse/Stone.png");
-		joystickup       = loadTexture("joystick/Joystickup.png");
-		joystickunder    = loadTexture("joystick/Joystickunder.png");
-		apple 			 = loadTexture("Garbage/apple.png");
-		paper			 = loadTexture("Garbage/garbage.png");
-		oil				 =  loadTexture("Garbage/oil.png");
-		boat			= loadTexture("Hindernisse/ship.png");
-		cargoShip 	= loadTexture("Hindernisse/cargo_ship.png");
-		gasBottle 	= loadTexture("Hindernisse/Tauchflasche.png");
-		black			 = loadTexture("background/black.png");
-		restartButton	 = loadTexture("Gamescreens/restartbutton.png");
-		restartButton_hover	 = loadTexture("Gamescreens/restartbutton_hover.png");
-		startButton		 = loadTexture("Gamescreens/startbutton.png");
-		menuButton		 = loadTexture("Gamescreens/menubutton.png");
-		air				 = loadTexture("air/air.png");
-		air_green		 = loadTexture("air/green.png");
-		air_orange		 = loadTexture("air/orange.png");
-		air_red			 = loadTexture("air/red.png");
-		music 		     = loadMusic("sounds/Backgroundmusic.mp3");
-		bite 			 = loadSound("sounds/Bite.wav");
-		gasbottlehit	 = loadSound("sounds/Gasbottlehit.wav");
-		boathit			 = loadSound("sounds/Boathit.wav");
+		backgroundBottom 	= loadTexture("background/sandBackgrounds.png");
+		backgroundMiddle 	= loadTexture("background/mainBackground.png");
+		backgroundTop    	= loadTexture("background/topBackground.png");
+		background		 	= loadTexture("background/mainBackground.png");
+		diver 			 	= loadTexture("diver/diver.png");
+		shark			 	= loadTexture("Hindernisse/myshark.png");
+		jellyfish 		 	= loadTexture("Hindernisse/qualle.png");
+		plant			 	= loadTexture("Hindernisse/green-plant.png");
+		rock 			 	= loadTexture("Hindernisse/Stone.png");
+		joystickup       	= loadTexture("joystick/Joystickup.png");
+		joystickunder    	= loadTexture("joystick/Joystickunder.png");
+		apple 			 	= loadTexture("Garbage/apple.png");
+		paper			 	= loadTexture("Garbage/garbage.png");
+		oil				 	=  loadTexture("Garbage/oil.png");
+		boat			 	= loadTexture("Hindernisse/ship.png");
+		cargoShip 			= loadTexture("Hindernisse/cargo_ship.png");
+		gasBottle 			= loadTexture("Hindernisse/Tauchflasche.png");
+		black			 	= loadTexture("background/black.png");
+		restartButton	 	= loadTexture("Gamescreens/restartbutton.png");
+		restartButton_hover	= loadTexture("Gamescreens/restartbutton_hover.png");
+		startButton		 	= loadTexture("Gamescreens/startbutton.png");
+		startButton_hover	= loadTexture("Gamescreens/startbutton_hover.png");
+		menuButton		 	= loadTexture("Gamescreens/menubutton.png");
+		menuButton_hover 	= loadTexture("Gamescreens/menubutton_hover.png");
+		highscoreButton		= loadTexture("Gamescreens/highscorebutton.png");
+		highscoreButton_hover=loadTexture("Gamescreens/highscorebutton_hover.png");
+		air				 	= loadTexture("air/air.png");
+		air_green		 	= loadTexture("air/green.png");
+		air_orange		 	= loadTexture("air/orange.png");
+		air_red			 	= loadTexture("air/red.png");
+		music 		    	= loadMusic("sounds/Backgroundmusic.mp3");
+		bite 			 	= loadSound("sounds/Bite.wav");
+		gasbottlehit	 	= loadSound("sounds/Gasbottlehit.wav");
+		boathit			 	= loadSound("sounds/Boathit.wav");
 		jellyfishhit	 = loadSound("sounds/Jellyfishhit.wav");
 		startup			 = loadSound("sounds/Startup.wav");
 		font 			 = new BitmapFont(Gdx.files.internal("fonts/StS.fnt"));
@@ -135,7 +143,11 @@ public class Assets {
 
 	public void dispose() {
 		// dispose Textures
-		Texture[] tex = new Texture[]{backgroundMiddle, background, diver, plant, rock, boat, cargoShip, shark, gasBottle, jellyfish, joystickup, joystickunder, apple, paper, oil, air,air_green,air_orange,air_red, black,restartButton,restartButton_hover, startButton, menuButton};
+		Texture[] tex = new Texture[]{backgroundMiddle, background, diver, plant, rock, boat,cargoShip, shark,
+										gasBottle, jellyfish, joystickup, joystickunder, apple, paper, oil, air,
+										air_green,air_orange,air_red, black,restartButton,restartButton_hover,
+										startButton,startButton_hover, menuButton, menuButton_hover, highscoreButton,
+										highscoreButton_hover};
 		for(Texture t:tex){
 			t.dispose();
 		}

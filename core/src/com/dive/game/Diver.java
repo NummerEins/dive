@@ -33,6 +33,7 @@ public class Diver {
 		sprite = new Sprite(texture);
 		sprite.setSize(width, height);
 		sprite.setPosition(0,960-sprite.getHeight());
+		
 		// set shapes for collision
 		shape = new Rectangle[2];
 		// calculate size and position for bigger rectangle
