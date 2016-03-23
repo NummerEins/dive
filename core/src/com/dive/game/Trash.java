@@ -24,9 +24,9 @@ public class Trash extends GameObject {
 
 		// array with sprites to choose from set of random textures
 		sprites = new Sprite[] { new Sprite(Assets.getInstance().apple),
-				new Sprite(Assets.getInstance().paper) , new Sprite(Assets.getInstance().oil)};
-		// apple 7 pts, paper 5 pts, oil 15 pts
-		listTrashScore = new int[]{7,5,15};
+				new Sprite(Assets.getInstance().paper) , new Sprite(Assets.getInstance().oil), new Sprite (Assets.getInstance().can) , new Sprite (Assets.getInstance().can)};
+		// apple 7 pts, paper 5 pts, oil 15 pts, can 12 pts
+		listTrashScore = new int[]{7,5,15, 12, 12};
 		
 		// set texture, size
 		setRandomTexture();
@@ -90,14 +90,17 @@ public class Trash extends GameObject {
 
 	//method to assign texture and size of sprite
 	public void setRandomTexture() {
-		int i = rand.nextInt(3);
+		int i = rand.nextInt(5);
 		sprite = sprites[i];
 		trashScore = listTrashScore[i];
 		sizeTrash = 40 + rand.nextInt(50);
 		if(i==2){
-			sprite.setSize(1.3f*sizeTrash, 1.1f*sizeTrash);
+			sprite.setSize(2f* sizeTrash, 2.6f*sizeTrash);
 		}
-		else{ sprite.setSize(sizeTrash, sizeTrash);}
+		if(i==3 || i == 4){
+			sprite.setSize(0.7f*sizeTrash, sizeTrash);
+		}
+		if(i == 0 || i == 1){ sprite.setSize(sizeTrash, sizeTrash);}
 	}
 	
 	public void delete(){
