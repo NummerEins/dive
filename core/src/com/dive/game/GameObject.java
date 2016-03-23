@@ -14,7 +14,7 @@ public class GameObject {
 	protected float x,y;				//relative Koordinaten des Objekts (% des Gamescreens)
 	protected float width, height;		//relative Größe des Objekts (% des Gamescreens)
 	protected boolean active;			//staus des Spielobjekts
-	protected BitmapFont font = new BitmapFont();
+	protected BitmapFont font;
 	protected boolean fading;			//gibt an, ob das Objekt gerade ausgeblendet wird
 	protected float fadeCounter, scoreOffset;
 	public boolean alreadyhit;
