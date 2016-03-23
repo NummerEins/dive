@@ -71,6 +71,7 @@ public class Trash extends GameObject {
 				sprite.setColor(1, 1, 1, (0.3f-fadeCounter)/0.3f);
 			}
 			else{
+				sprite.setColor(1, 1, 1, 1);
 				fading = false;
 				fadeCounter = 0;
 				sprite.setX(-sprite.getWidth()-1);
