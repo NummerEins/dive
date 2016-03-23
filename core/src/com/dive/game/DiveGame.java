@@ -30,7 +30,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	private Parallax parallax;
 	private GameState gameState;
 	private float deltaTime;
-	private BitmapFont font;
+	private BitmapFont font_green, font_yellow;
 	private ArrayList<InputProcessor> processors;
 
 	private float widthScale; //breite der black bars 
@@ -58,17 +58,18 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		diverAnimation = new DiverAnimation();
 		
 		batch = new SpriteBatch();
-		font = Assets.getInstance().font;
+		font_green = Assets.getInstance().font_green;
+		font_yellow = Assets.getInstance().font_yellow;
 		
 		//Gamelogik der Welt erzeugen 
 		gameState = new GameState(0);
 		newObjects = new ObjectGenerator(8,8,8,8,6,3,3, 0.1f);
 		parallax = new Parallax(0.03f);
-		world = new World(newObjects,0.1f,gameState, font, diverAnimation);
+		world = new World(newObjects,0.1f,gameState, font_green, diverAnimation);
 		
 		//Joystick und Stage erzeugen
 		stage = new Stage();
-		joystick = new Joystick(stage,font);
+		joystick = new Joystick(stage,font_green);
 		joystick.addActors();
 		
 		//Kamera erzeugen
@@ -82,9 +83,9 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		
         // Inputverwaltung setzen
 		saveGame = new SaveGame();
-		endscreen = new EndScreen(gameState, world, font, saveGame);
+		endscreen = new EndScreen(gameState, world, font_green,font_yellow, saveGame);
 		menu = new Menu(gameState, world);
-		highscores = new ScoreScreen(gameState, world, font, saveGame);
+		highscores = new ScoreScreen(gameState, world, font_green, saveGame);
 		processors = new ArrayList<InputProcessor>();
 		processors.add(endscreen);
 		processors.add(stage);
@@ -97,7 +98,8 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	@Override
 	public void dispose() {
 		batch.dispose();
-		font.dispose();
+		font_green.dispose();
+		font_yellow.dispose();
 		world.music.stop();
 		Assets.getInstance().dispose();
 		stage.dispose();

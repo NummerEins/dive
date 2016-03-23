@@ -16,17 +16,23 @@ public class EndScreen implements InputProcessor {
 	private int score;
 	private GameState gameState;
 	private World world;
-	private BitmapFont font;
+	private BitmapFont font_green, font_yellow;
 	private boolean[] hovers;
 	private String topAlert, deathReason;
 	private int distance;
 	
 	
-	public EndScreen(GameState state, World world, BitmapFont font, SaveGame saveGame){
+	public EndScreen(GameState state, World world, BitmapFont font_green, BitmapFont font_yellow, SaveGame saveGame){
 		
 		gameState = state;
 		this.world = world;
-		this.font = font;
+		this.font_green = font_green;
+		this.font_yellow = font_yellow;
+		
+		if(font_yellow == null){
+			System.out.println("fail") ;
+		}
+		
 		score = 0;
 		
 		hovers = new boolean[]{false,false};
@@ -51,13 +57,13 @@ public class EndScreen implements InputProcessor {
 		else{restart.setTexture(Assets.getInstance().restartButton);}
 		
 		
-		font.draw(batch, topAlert, 560, 900, 800, Align.center, true);
-		font.draw(batch, "your score:", 560, 850, 800, Align.center, true);
-		font.getData().setScale(4, 4);
-		font.draw(batch, score + "", 560, 800, 800, Align.center, true);
-		font.getData().setScale(1, 1);
-		font.draw(batch, "Unfortunately you " + deathReason + " after " + distance + "m!" , 0, 650, 1920, Align.center, true);
-		font.draw(batch, "Better luck next time..." , 560, 600, 800, Align.center, true);
+		font_green.draw(batch, topAlert, 560, 900, 800, Align.center, true);
+		font_green.draw(batch, "your score:", 560, 850, 800, Align.center, true);
+		font_yellow.getData().setScale(2, 2);
+		font_yellow.draw(batch, score + "", 560, 800, 800, Align.center, true);
+		font_yellow.getData().setScale(1, 1);
+		font_green.draw(batch, "Unfortunately you " + deathReason + " after " + distance + "m!" , 0, 650, 1920, Align.center, true);
+		font_green.draw(batch, "Better luck next time..." , 560, 600, 800, Align.center, true);
 		
 		restart.draw(batch);
 		menu.draw(batch);

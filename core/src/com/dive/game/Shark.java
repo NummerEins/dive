@@ -17,7 +17,7 @@ import com.badlogic.gdx.math.Rectangle;
 			// initialize random variable, speed in relation to background
 			rand = new Random();
 			acc = new float[]{0.1f, 0};
-			sprite = new Sprite(Assets.getInstance().shark);
+			sprite = new Sprite(Assets.getInstance().shark_1);
 			
 			// set position of shark
 			sprite.setPosition(xcord, ycord);

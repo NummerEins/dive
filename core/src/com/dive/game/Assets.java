@@ -25,7 +25,10 @@ public class Assets {
 	
 	//Objekte
 	public Texture diver;
-	public Texture shark;
+	public Texture shark_1;
+	public Texture shark_2;
+	public Texture shark_3;
+	public Texture shark_4;
 	public Texture jellyfish;
 	public Texture plant;
 	public Texture rock;
@@ -67,7 +70,8 @@ public class Assets {
 	
 	
 	//misc
-	public BitmapFont font;
+	public BitmapFont font_green;
+	public BitmapFont font_yellow;
 	public Texture animation;
 	public Texture black;
 	
@@ -109,7 +113,10 @@ public class Assets {
 		backgroundTop    	= loadTexture("background/topBackground.png");
 		background		 	= loadTexture("background/mainBackground.png");
 		diver 			 	= loadTexture("diver/diver.png");
-		shark			 	= loadTexture("Hindernisse/myshark.png");
+		shark_1			 	= loadTexture("Hindernisse/shark.png");
+		shark_2			 	= loadTexture("Hindernisse/shark1.png");
+		shark_3			 	= loadTexture("Hindernisse/shark2.png");
+		shark_4			 	= loadTexture("Hindernisse/shark3.png");
 		jellyfish 		 	= loadTexture("Hindernisse/qualle.png");
 		plant			 	= loadTexture("Hindernisse/green-plant.png");
 		rock 			 	= loadTexture("Hindernisse/Stone.png");
@@ -143,14 +150,15 @@ public class Assets {
 		trashhit		 = loadSound("sounds/Trashhit.wav");
 		planthit		 = loadSound("sounds/Planthit.wav");
 		startup			 = loadSound("sounds/Startup.wav");
-		font 			 = new BitmapFont(Gdx.files.internal("fonts//customFontsGreen/customFont.fnt"));
+		font_green		 = new BitmapFont(Gdx.files.internal("fonts//customFontsGreen/customFont.fnt"));
+		font_yellow		 = new BitmapFont(Gdx.files.internal("fonts//customFontsYellow/customFont.fnt"));
 		animation 		 = loadTexture("spritesheet/spritesheet.png");
 		
 	}
 
 	public void dispose() {
 		// dispose Textures
-		Texture[] tex = new Texture[]{backgroundMiddle, background, diver, plant, rock, boat,cargoShip, shark,
+		Texture[] tex = new Texture[]{backgroundMiddle, background, diver, plant, rock, boat,cargoShip, shark_1, shark_2, shark_3, shark_4,
 										gasBottle, jellyfish, joystickup, joystickunder, apple, paper, oil, air,
 										air_green,air_orange,air_red, black,restartButton,restartButton_hover,
 										startButton,startButton_hover, menuButton, menuButton_hover, highscoreButton,
@@ -166,7 +174,8 @@ public class Assets {
 		// dispose music
 		music.dispose();
 		// dispose fonts
-		font.dispose();
+		font_green.dispose();
+		font_yellow.dispose();
 	}
 
 	//public static void playSound (Sound sound) {
