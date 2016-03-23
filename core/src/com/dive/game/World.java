@@ -16,7 +16,7 @@ public class World {
 	private GameState state;				//setzt den SPielzustand (zB um zu pausieren)
 	private float distance;					//die zurückgelegte Strecke - legt Geschwindigkeit fest
 	private int score;						//Anzahl des gesammelten Mülls
-	private BitmapFont font;
+	private BitmapFont font_green, font_yellow;
 	public Music music;
 	private Sound bite;
 	private Sound gasbottlehit;
@@ -31,7 +31,7 @@ public class World {
 	private Highscores scores;
 	
 	private DiverAnimation diverAnimation;
-	public World(ObjectGenerator objectGen, float iniSpeed, GameState state, BitmapFont font, DiverAnimation animation, Highscores scores){
+	public World(ObjectGenerator objectGen, float iniSpeed, GameState state, BitmapFont font_green, BitmapFont font_yellow, DiverAnimation animation,Highscores scores){
 		
 		objects = new ArrayList<GameObject>();
 		speed = iniSpeed;
@@ -40,7 +40,8 @@ public class World {
 
 		this.objectGen = objectGen;
 		this.state = state;
-		this.font = font;
+		this.font_green = font_green;
+		this.font_yellow = font_yellow;
 		this.scores = scores;
 		
 		diverAnimation = animation;
@@ -68,8 +69,8 @@ public class World {
 	public void draw(Batch batch){			//Alle Spielobjekte zeichnen
 		for(GameObject o: objects){o.draw(batch);}
 		diver.draw(batch);
-		font.draw(batch, Integer.toString(score),20, 1060);
-		font.draw(batch,Integer.toString((int) (2*distance)),20, 1020);
+		font_yellow.draw(batch, Integer.toString(score),20, 1060);
+		font_green.draw(batch,Integer.toString((int) (1.5f*distance)) + " m",20, 1020);
 	}
 	
 	public void move(float deltaTime,float x,float y){
@@ -134,7 +135,6 @@ public class World {
 					o.setAlreadyhit(true);
 					jellyfishhit.play(100f);
 				}
-			//	System.out.println(o.alreadyhit);
 				diver.slow(speed);
 				diver.setBreath(2000);
 			}

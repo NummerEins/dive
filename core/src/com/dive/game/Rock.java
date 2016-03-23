@@ -33,7 +33,7 @@ public class Rock extends GameObject {
 	public void reset(){
 		sizeRock = 150 + rand.nextInt(70);
 		sprite.setSize(sizeRock*1.92f, sizeRock);
-		shape.setSize(sprite.getWidth(), sprite.getHeight()*0.85f);
+		shape.setSize(sprite.getWidth()*0.85f, sprite.getHeight()*0.9f);
 	}
 	
 

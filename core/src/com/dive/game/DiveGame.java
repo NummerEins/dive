@@ -56,6 +56,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	}
 	
 
+
 	@Override
 	public void create() {
 		
@@ -75,7 +76,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		gameState = new GameState(0);
 		newObjects = new ObjectGenerator(8,8,8,8,6,3,3, 0.1f);
 		parallax = new Parallax(0.03f);
-		world = new World(newObjects,0.1f,gameState, font_green, diverAnimation, scores);
+		world = new World(newObjects,0.1f,gameState, font_green, font_yellow, diverAnimation, scores);
 		
 		//Joystick und Stage erzeugen
 		stage = new Stage();
@@ -138,7 +139,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			parallax.move(deltaTime);
 		}
 		else if(gameState.getState() == State.ENDSCREEN){
-			endscreen.setDistance(2*world.getDistance());
+			endscreen.setDistance(world.getDistance());
 			endscreen.setReason(world.getReason());
 			endscreen.setScore(world.getScore());
 		}
@@ -253,8 +254,8 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		if(joystick.getCheckbox1().isChecked() && (gameState.getState() == State.MENU || gameState.getState() == State.MENU)){
 			boolean bumms = joystick.moveCheckbox1();
 			int val1 = bumms? 1 : 0;
-			joystick.getCheckbox1().addAction(Actions.moveTo(1575*val1 + 50, 35));
-			joystick.getJoystick().addAction(Actions.moveTo(-1575*(val1-1) + 50, 35));
+			joystick.getCheckbox1().addAction(Actions.moveTo((1575*val1 + 50)*joystick.getSkalar(), 35*joystick.getSkalar()));
+			joystick.getJoystick().addAction(Actions.moveTo((-1575*(val1-1) + 50)*joystick.getSkalar(), 35*joystick.getSkalar()));
 			joystick.moveForReal();
 		}
 

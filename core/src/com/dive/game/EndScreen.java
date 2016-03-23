@@ -19,7 +19,7 @@ public class EndScreen implements InputProcessor {
 	private BitmapFont font_green, font_yellow;
 	private boolean[] hovers;
 	private String topAlert, deathReason;
-	private int distance;
+	private float distance;
 	
 	
 	public EndScreen(GameState state, World world, BitmapFont font_green, BitmapFont font_yellow, Highscores scores){
@@ -47,6 +47,8 @@ public class EndScreen implements InputProcessor {
 		deathReason = "[suddenly died?]";
 		distance = 0;
 		
+		font_green.getData().setScale(0.5f,0.5f);
+		
 	}
 	
 	public void draw(Batch batch){
@@ -59,12 +61,12 @@ public class EndScreen implements InputProcessor {
 		
 		font_green.draw(batch, topAlert, 560, 900, 800, Align.center, true);
 		font_green.draw(batch, "your score:", 560, 850, 800, Align.center, true);
-		font_yellow.getData().setScale(2, 2);
-		font_yellow.draw(batch, score + "", 560, 800, 800, Align.center, true);
+		font_yellow.getData().setScale(1.2f, 1.2f);
+		font_yellow.draw(batch, score + "", 560, 770, 800, Align.center, true);
 		font_yellow.getData().setScale(1, 1);
-		font_green.draw(batch, "Unfortunately you " + deathReason + " after " + distance + "m!" , 0, 650, 1920, Align.center, true);
+		font_green.draw(batch, "Unfortunately you " + deathReason + " after " + Integer.toString((int) (1.5f*distance)) + "m!" , 0, 650, 1920, Align.center, true);
 		font_green.draw(batch, "Better luck next time..." , 560, 600, 800, Align.center, true);
-		
+		font_yellow.getData().setScale(0.5f, 0.5f);
 		restart.draw(batch);
 		menu.draw(batch);
 		
@@ -76,7 +78,7 @@ public class EndScreen implements InputProcessor {
 	}
 	
 	public void setDistance(float d){
-		distance = (int) d;
+		distance = d;
 	}
 	
 	public void setReason(String type){
