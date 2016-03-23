@@ -95,7 +95,7 @@ public class Trash extends GameObject {
 		trashScore = listTrashScore[i];
 		sizeTrash = 40 + rand.nextInt(50);
 		if(i==2){
-			sprite.setSize(2f* sizeTrash, 2.6f*sizeTrash);
+			sprite.setSize(1.5f* sizeTrash, 2f*sizeTrash);
 		}
 		if(i==3 || i == 4){
 			sprite.setSize(0.7f*sizeTrash, sizeTrash);
