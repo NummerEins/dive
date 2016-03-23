@@ -77,8 +77,9 @@ public class World {
 		
 		//Level aufbauen
 		objectGen.nextPlant(objects, deltaTime);
-		objectGen.nextShark(objects, deltaTime, distance);
+		
 		objectGen.nextTrash(objects, deltaTime, distance);
+		objectGen.nextShark(objects, deltaTime, distance);
 		objectGen.nextBoat(objects, deltaTime);
 		objectGen.nextJellyfish(objects, deltaTime);
 		objectGen.nextGasBottle(objects, deltaTime);
