@@ -141,7 +141,7 @@ public class Assets {
 		rockhit			 = loadSound("sounds/Rockhit.mp3");
 		trashhit		 = loadSound("sounds/Trashhit.wav");
 		startup			 = loadSound("sounds/Startup.wav");
-		font 			 = new BitmapFont(Gdx.files.internal("fonts/StS.fnt"));
+		font 			 = new BitmapFont(Gdx.files.internal("fonts//customFontsGreen/customFont.fnt"));
 		animation 		 = loadTexture("spritesheet/spritesheet.png");
 		
 	}

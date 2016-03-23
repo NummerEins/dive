@@ -377,7 +377,7 @@ public class ObjectGenerator {
 				e.getSprite()
 						.setY(minHeightWater
 								+ rand.nextInt(maxHeightWater - minHeightWater));
-
+				e.getShape().setPosition(e.getSprite().getX(),e.getSprite().getY());
 			}
 		}
 	}
