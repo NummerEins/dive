@@ -20,7 +20,7 @@ public class Rock extends GameObject {
 		
 		sprite.setPosition(xcord, ycord);
 		
-		shape = new Rectangle(0f, sprite.getY(), sprite.getWidth(), sprite.getHeight());
+		shape = new Rectangle(0f, sprite.getY(), sprite.getWidth(), sprite.getHeight()*0.85f);
 		shape.setPosition(sprite.getX(), sprite.getY());
 
 		reset();
@@ -33,7 +33,7 @@ public class Rock extends GameObject {
 	public void reset(){
 		sizeRock = 150 + rand.nextInt(70);
 		sprite.setSize(sizeRock*1.92f, sizeRock);
-		shape.setSize(sprite.getWidth(), sprite.getHeight());
+		shape.setSize(sprite.getWidth(), sprite.getHeight()*0.85f);
 	}
 	
 

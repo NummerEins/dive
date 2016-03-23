@@ -11,8 +11,6 @@ public class ObjectGenerator {
 	private Jellyfish[] listJellyfish;
 	private GasBottle[] listGasBottles;
 	private Rock[] listRocks;
-	private GameObject[] listGameObjects;
-
 	private float countDownTrash;
 	private float countDownShark;
 	private float countDownPlant;
@@ -38,8 +36,6 @@ public class ObjectGenerator {
 	private int maxNoJellyfish;
 	private int maxNoGasBottle;
 	private int maxNoRock;
-	private int maxNoGameObject;
-
 	// zufällige Schwimmhöhe von Haien mit festem min/max Wert, Pflanzen haben
 	// feste y
 	// Koordinate
@@ -82,8 +78,6 @@ public class ObjectGenerator {
 		listJellyfish = new Jellyfish[maxNoJellyfish];
 		listGasBottles = new GasBottle[maxNoGasBottle];
 		listRocks = new Rock[maxNoRock];
-		listGameObjects = new GameObject[maxNoGameObject];
-
 		// kreiert Liste mit Haien
 		for (int i = 0; i < maxNoShark; i++) {
 			listSharks[i] = new Shark(1920, minHeightWater
@@ -156,6 +150,7 @@ public class ObjectGenerator {
 							minHeightWater
 									+ rand.nextInt(maxHeightWater
 											- minHeightWater));
+					s.getShape().setPosition(s.getSprite().getX(), s.getSprite().getY());
 				}
 
 			}
@@ -177,7 +172,7 @@ public class ObjectGenerator {
 				e.getSprite()
 						.setY(minHeightWater
 								+ rand.nextInt(maxHeightWater - minHeightWater));
-
+				e.getShape().setPosition(e.getSprite().getX(), e.getSprite().getY());
 			}
 		}
 	}
@@ -211,7 +206,7 @@ public class ObjectGenerator {
 				e.getSprite()
 						.setY(minHeightWater
 								+ rand.nextInt(maxHeightWater - minHeightWater));
-
+				e.getShape().setPosition(e.getSprite().getX(), e.getSprite().getY());
 			}
 		}
 	}
@@ -239,6 +234,7 @@ public class ObjectGenerator {
 				list.remove(p);
 				p.reset();
 				p.getSprite().setX(1920);
+				p.getShape().setX(1920);
 			}
 		}
 
@@ -251,6 +247,7 @@ public class ObjectGenerator {
 		// überprüft ob Zeit abgelaufen und Objekt nicht aktiv, schreibt in
 		// Liste um dann gezeichnet zu werden
 		if (countDownRock < 0 && !listRocks[pointerRock].active) {
+
 			Rock r = listRocks[pointerRock];
 			for (int k = 0; k < 10; k++) {
 				if (!overlap(r.getSprite().getHeight(), r.getSprite().getY(), listGasBottles)) {
@@ -293,6 +290,7 @@ public class ObjectGenerator {
 				list.remove(p);
 				p.reset();
 				p.getSprite().setX(1920);
+				p.getShape().setX(1920);
 			}
 		}
 
@@ -323,13 +321,14 @@ public class ObjectGenerator {
 				b.reset();
 				b.getSprite().setX(1920);
 				b.getSprite().setY(920);
+				b.getShape().setPosition(b.getSprite().getX(), b.getSprite().getY());
 				// System.out.println(b.sprite.getY());
 			}
 		}
 
 	}
 
-	// gehe Liste der Haie durch und erstelle neue Liste von Haien welche genau
+	// gehe Liste des Mülls durch und erstelle neue Liste von Müll welche genau
 	// so gezeichnet werden soll
 	public void nextTrash(ArrayList<GameObject> list, float deltaTime,
 			float distance) {
@@ -357,18 +356,18 @@ public class ObjectGenerator {
 		// zur Verfügung
 
 		for (int i = 0; i < maxNoTrash; i++) {
-			Trash e = listTrash[i];
-			if (e.getActive()
-					&& (e.getSprite().getX() < -e.getSprite().getWidth())) {
+			Trash t = listTrash[i];
+			if (t.getActive()
+					&& (t.getSprite().getX() < -t.getSprite().getWidth())) {
 
-				e.setActive(false);
-				list.remove(e);
-				e.setRandomTexture();
-				e.getSprite().setX(1920);
-				e.getSprite()
+				t.setActive(false);
+				list.remove(t);
+				t.setRandomTexture();
+				t.getSprite().setX(1920);
+				t.getSprite()
 						.setY(minHeightWater
 								+ rand.nextInt(maxHeightWater - minHeightWater));
-				e.getShape().setPosition(e.getSprite().getX(),e.getSprite().getY());
+				t.getShape().setPosition(t.getSprite().getX(),t.getSprite().getY());
 			}
 		}
 	}
@@ -399,6 +398,7 @@ public class ObjectGenerator {
 				g.setActive(false);
 				list.remove(g);
 				g.getSprite().setX(1920);
+				g.getShape().setX(g.getSprite().getX());
 			}
 		}
 
