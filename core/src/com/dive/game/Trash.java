@@ -75,6 +75,7 @@ public class Trash extends GameObject {
 				fading = false;
 				fadeCounter = 0;
 				sprite.setX(-sprite.getWidth()-1);
+				shape.setX(sprite.getX());
 				scoreOffset = 0;
 			}
 			
