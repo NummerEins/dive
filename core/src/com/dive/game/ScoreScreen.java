@@ -17,7 +17,7 @@ public class ScoreScreen implements InputProcessor {
 	private String[] scoreList, nameList;
 	
 	
-	public ScoreScreen(GameState state,World world, BitmapFont font, SaveGame saveGame){
+	public ScoreScreen(GameState state,World world, BitmapFont font, Highscores score){
 		
 		gameState = state;
 		this.font = font;
@@ -25,7 +25,7 @@ public class ScoreScreen implements InputProcessor {
 		returnMenu = new Sprite(Assets.getInstance().menuButton);
 		returnMenu.setBounds(560, 200, 800, 155);
 		
-		Score[] scores = saveGame.loadHighscore(System.getProperty("user.home") + "/highscores.json").get();
+		Score[] scores = score.get();
 		nameList = new String[10];
 		scoreList = new String[10];
 		

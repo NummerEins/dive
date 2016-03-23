@@ -39,6 +39,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	private ScoreScreen highscores;
 	
 	private SaveGame saveGame; //speichert highscores in datei
+	private Highscores scores;
 
 	private Stage stage;
 	private Joystick joystick;
@@ -46,6 +47,13 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	private DiverAnimation diverAnimation;
 	
 	private OrthographicCamera cam;
+	
+	private Platform platform;
+	
+	
+	public DiveGame(Platform p){
+		platform = p;
+	}
 	
 
 	@Override
@@ -81,10 +89,11 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		bb2 = new Sprite(Assets.getInstance().black);
 		
         // Inputverwaltung setzen
-		saveGame = new SaveGame();
-		endscreen = new EndScreen(gameState, world, font_green,font_yellow, saveGame);
+		saveGame = new SaveGame(platform);
+		scores = saveGame.loadHighscore(saveGame.getSaveLocation());
+		endscreen = new EndScreen(gameState, world, font_green,font_yellow, scores);
 		menu = new Menu(gameState, world);
-		highscores = new ScoreScreen(gameState, world, font_green, saveGame);
+		highscores = new ScoreScreen(gameState, world, font_green, scores);
 		processors = new ArrayList<InputProcessor>();
 		processors.add(endscreen);
 		processors.add(stage);
@@ -96,6 +105,9 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 
 	@Override
 	public void dispose() {
+		
+		saveGame.saveHighscore(saveGame.getSaveLocation(),scores);
+		
 		batch.dispose();
 		font_green.dispose();
 		font_yellow.dispose();
