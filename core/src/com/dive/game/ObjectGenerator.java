@@ -213,7 +213,6 @@ public class ObjectGenerator {
 				e.setActive(false);
 				list.remove(e);
 				e.reset();
-				//System.out.println(e.alreadyhit);
 				e.getSprite().setX(1920);
 				e.getSprite()
 						.setY(minHeightWater
@@ -431,6 +430,7 @@ public class ObjectGenerator {
 		for (Plant p : listPlants) {
 			p.getSprite().setX(-1000);
 			p.getShape().setX(-1000);
+			p.setAlreadyhit(false);
 			p.setActive(true);
 
 		}

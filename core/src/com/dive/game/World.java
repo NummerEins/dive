@@ -24,6 +24,7 @@ public class World {
 	private Sound jellyfishhit;
 	private Sound trashhit;
 	private Sound rockhit;
+	private Sound planthit;
 	private Sound startup;
 	private boolean infAir;
 	private DiverAnimation diverAnimation;
@@ -53,6 +54,7 @@ public class World {
 		jellyfishhit = Assets.getInstance().jellyfishhit;
 		trashhit = Assets.getInstance().trashhit;
 		rockhit = Assets.getInstance().rockhit;
+		planthit = Assets.getInstance().planthit;
 		startup = Assets.getInstance().startup;
 		infAir = false;
 		
@@ -113,8 +115,9 @@ public class World {
 				break;
 			}
 			else if(o.getType() == ObjectType.PLANT){
-				if(o.alreadyhit == false){
-					o.alreadyhit = true;
+				if(o.getAlreadyhit() == false){
+					o.setAlreadyhit(true);
+					planthit.play();
 				}
 				diver.slow(speed);
 			}
