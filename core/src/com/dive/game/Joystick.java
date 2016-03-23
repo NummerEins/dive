@@ -33,7 +33,6 @@ public class Joystick{
 	private TextButtonStyle checkboxstyle1;
 	private TextButton checkbox1;
 	private BitmapFont touch1;
-	private Color color1;
 	private Table table;
 	private Stage stage;
 	private boolean side;
@@ -83,8 +82,6 @@ public class Joystick{
     	
     	
     	this.touch1 = font;
-    	this.color1 = Color.BLACK;
-    	
     	this.checkboxstyle1= new TextButtonStyle(checkboxOn1,checkboxOff1,checkboxOn1, touch1);
 		this.checkbox1 = new TextButton("",this.checkboxstyle1);
 		this.checkbox1.setBounds(1575*val + 50, 35, 250, 250);
@@ -130,7 +127,6 @@ public class Joystick{
 		return this.Checkboxskin;
 	}
 	public void moveForReal(){
-		System.out.println("es ist"+ this.side+",dasss es links ist");
 		if(side){
 			this.side = false;
 		}else{

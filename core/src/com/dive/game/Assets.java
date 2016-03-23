@@ -37,6 +37,7 @@ public class Assets {
 	public Texture apple;
 	public Texture paper;
 	public Texture oil;
+	public Texture can;
 	public Texture boat;
 	public Texture cargoShip;
 	public Texture gasBottle;
@@ -161,7 +162,7 @@ public class Assets {
 	public void dispose() {
 		// dispose Textures
 		Texture[] tex = new Texture[]{backgroundMiddle, background, diver, plant, rock, boat,cargoShip, shark_1, shark_2, shark_3, shark_4,
-										gasBottle, jellyfish, joystickup, joystickunder, apple, paper, oil, air,
+										gasBottle, jellyfish, joystickup, joystickunder, apple, paper, oil, can, air,
 										air_green,air_orange,air_red, black,restartButton,restartButton_hover,
 										startButton,startButton_hover, menuButton, menuButton_hover, highscoreButton,
 										highscoreButton_hover, gameOver};
@@ -180,7 +181,4 @@ public class Assets {
 		font_yellow.dispose();
 	}
 
-	//public static void playSound (Sound sound) {
-	//	if (Settings.soundEnabled) sound.play(1);
-	//}
 }

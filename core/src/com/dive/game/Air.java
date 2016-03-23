@@ -1,7 +1,5 @@
 package com.dive.game;
 
-import java.awt.Color;
-
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
