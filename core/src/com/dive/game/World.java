@@ -22,6 +22,9 @@ public class World {
 	private Sound gasbottlehit;
 	private Sound boathit;
 	private Sound jellyfishhit;
+	private Sound trashhit;
+	private Sound rockhit;
+	private Sound planthit;
 	private Sound startup;
 	private boolean infAir;
 	private DiverAnimation diverAnimation;
@@ -41,7 +44,7 @@ public class World {
 		diver = new Diver(Assets.getInstance().diver, 150, 75, 300, diverAnimation);
 		// start playing background music
 		music = Assets.getInstance().music;	
-		music.setVolume(0.1f);
+		music.setVolume(0.4f);
 		music.play();
 		music.setLooping(true);
 		// loading sounds
@@ -49,6 +52,9 @@ public class World {
 		gasbottlehit = Assets.getInstance().gasbottlehit;
 		boathit = Assets.getInstance().boathit;
 		jellyfishhit = Assets.getInstance().jellyfishhit;
+		trashhit = Assets.getInstance().trashhit;
+		rockhit = Assets.getInstance().rockhit;
+		planthit = Assets.getInstance().planthit;
 		startup = Assets.getInstance().startup;
 		infAir = false;
 		
@@ -91,6 +97,7 @@ public class World {
 		ArrayList<GameObject> collisions = Collision.checkCollision(diver, objects);
 		for(GameObject o: collisions){
 			if(o.getType() == ObjectType.TRASH && !o.isFading()){
+				trashhit.play();
 				o.delete();
 				score+=o.getTrashScore();
 			}
@@ -103,12 +110,14 @@ public class World {
 				state.gameOver();
 				break;
 			}else if (o.getType() == ObjectType.ROCK){
+				rockhit.play();
 				state.gameOver();
 				break;
 			}
 			else if(o.getType() == ObjectType.PLANT){
-				if(o.alreadyhit == false){
-					o.alreadyhit = true;
+				if(o.getAlreadyhit() == false){
+					o.setAlreadyhit(true);
+					planthit.play();
 				}
 				diver.slow(speed);
 			}
