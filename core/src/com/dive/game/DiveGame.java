@@ -65,6 +65,9 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		
 		diverAnimation = new DiverAnimation();
 		
+		saveGame = new SaveGame(platform);
+		scores = saveGame.loadHighscore(saveGame.getSaveLocation());
+		
 		batch = new SpriteBatch();
 		font_green = Assets.getInstance().font_green;
 		font_yellow = Assets.getInstance().font_yellow;
@@ -73,7 +76,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		gameState = new GameState(0);
 		newObjects = new ObjectGenerator(8,8,8,8,6,3,3, 0.1f);
 		parallax = new Parallax(0.03f);
-		world = new World(newObjects,0.1f,gameState, font_green, font_yellow, diverAnimation);
+		world = new World(newObjects,0.1f,gameState, font_green, font_yellow, diverAnimation, scores);
 		
 		//Joystick und Stage erzeugen
 		stage = new Stage();
@@ -90,8 +93,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		bb2 = new Sprite(Assets.getInstance().black);
 		
         // Inputverwaltung setzen
-		saveGame = new SaveGame(platform);
-		scores = saveGame.loadHighscore(saveGame.getSaveLocation());
+		
 		endscreen = new EndScreen(gameState, world, font_green,font_yellow, scores);
 		menu = new Menu(gameState, world);
 		highscores = new ScoreScreen(gameState, world, font_green, scores);
@@ -142,6 +144,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			endscreen.setScore(world.getScore());
 		}
 		else if(gameState.getState() == State.HIGHSCORES){
+			highscores.setScores(scores);
 			parallax.setIdle();
 			parallax.move(deltaTime);
 		}
