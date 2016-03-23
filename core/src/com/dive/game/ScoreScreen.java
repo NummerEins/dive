@@ -17,7 +17,7 @@ public class ScoreScreen implements InputProcessor {
 	private String[] scoreList, nameList;
 	
 	
-	public ScoreScreen(GameState state,World world, BitmapFont font, Highscores score){
+	public ScoreScreen(GameState state,World world, BitmapFont font, Highscores scores){
 		
 		gameState = state;
 		this.font = font;
@@ -25,17 +25,21 @@ public class ScoreScreen implements InputProcessor {
 		returnMenu = new Sprite(Assets.getInstance().menuButton);
 		returnMenu.setBounds(560, 200, 800, 155);
 		
-		Score[] scores = score.get();
 		nameList = new String[10];
 		scoreList = new String[10];
 		
+		setScores(scores);
+		
+	}
+	
+	public void setScores(Highscores scores){
+		Score[] scoresArr = scores.get();
 		int i = 1;
-		for(Score s: scores){
+		for(Score s: scoresArr){
 			nameList[i-1] = i + ". " + s.getName();
 			scoreList[i-1] = Integer.toString(s.getScore());
 			i++;
 		}
-		
 	}
 	
 	public void draw(Batch batch){

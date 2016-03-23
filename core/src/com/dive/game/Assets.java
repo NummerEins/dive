@@ -150,8 +150,8 @@ public class Assets {
 		trashhit		 = loadSound("sounds/Trashhit.wav");
 		planthit		 = loadSound("sounds/Planthit.wav");
 		startup			 = loadSound("sounds/Startup.wav");
-		font_green		 = new BitmapFont(Gdx.files.internal("fonts//customFontsGreen/customFont.fnt"));
-		font_yellow		 = new BitmapFont(Gdx.files.internal("fonts//customFontsYellow/customFont.fnt"));
+		font_green		 = new BitmapFont(Gdx.files.internal("fonts/customFontsGreen/customFont.fnt"));
+		font_yellow		 = new BitmapFont(Gdx.files.internal("fonts/customFontsYellow/customFont.fnt"));
 		animation 		 = loadTexture("spritesheet/spritesheet.png");
 		
 	}
