@@ -156,6 +156,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			parallax.draw(batch);
 			if(gameState.getState() == State.GAME || gameState.getState() == State.PAUSE){
 				joystick.getCheckbox().addAction(Actions.fadeOut(1));
+				joystick.getCheckbox1().addAction(Actions.fadeOut(1)); 
 				world.draw(batch);
 			}
 			else if(gameState.getState() == State.ENDSCREEN){
@@ -165,13 +166,19 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			}
 			else if(gameState.getState() == State.HIGHSCORES){
 				highscores.draw(batch);
+				joystick.getCheckbox().addAction(Actions.fadeOut(0.1f));
+				joystick.getCheckbox1().addAction(Actions.fadeOut(0.1f));
+				joystick.getJoystick().addAction(Actions.fadeOut(0.1f));
 			}
 			else if(gameState.getState() == State.MENU){
-				joystick.getCheckbox().addAction(Actions.fadeIn(1)); 
+				joystick.getCheckbox().addAction(Actions.fadeIn(0.1f)); 
+				joystick.getCheckbox1().addAction(Actions.fadeIn(0.1f)); 
 				if(joystick.getCheckbox().isChecked()){
-					joystick.getJoystick().addAction(Actions.fadeOut(1));
+					joystick.getJoystick().addAction(Actions.fadeOut(0.01f));
+					joystick.getCheckbox1().addAction(Actions.fadeOut(0.01f)); 
 				}else{
-					joystick.getJoystick().addAction(Actions.fadeIn(1));
+					joystick.getJoystick().addAction(Actions.fadeIn(0.01f));
+					joystick.getCheckbox1().addAction(Actions.fadeIn(0.01f)); 
 				}
 				menu.draw(batch);
 			}
@@ -241,6 +248,14 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		for(InputProcessor p: processors){
 			p.touchDown(screenX, screenY, pointer, button);
 		}
+		if(joystick.getCheckbox1().isChecked() && (gameState.getState() == State.MENU || gameState.getState() == State.MENU)){
+			boolean bumms = joystick.moveCheckbox1();
+			int val1 = bumms? 1 : 0;
+			joystick.getCheckbox1().addAction(Actions.moveTo(1575*val1 + 50, 35));
+			joystick.getJoystick().addAction(Actions.moveTo(-1575*(val1-1) + 50, 35));
+			joystick.moveForReal();
+		}
+
 		return false;
 	}
 	@Override

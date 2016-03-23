@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 		private float x,y;
 		private int sizeShark;
 		private Random rand;
+		private Sprite[] sprites;
 		
 		
 		//kreiere Hai und ihr wird das bild, Größe des Bildes (width,height) und koordinaten übergeben
@@ -17,7 +18,9 @@ import com.badlogic.gdx.math.Rectangle;
 			// initialize random variable, speed in relation to background
 			rand = new Random();
 			acc = new float[]{0.1f, 0};
-			sprite = new Sprite(Assets.getInstance().shark_1);
+			sprites = new Sprite[] {new Sprite(Assets.getInstance().shark_1), new Sprite(Assets.getInstance().shark_2), new Sprite(Assets.getInstance().shark_3), new Sprite(Assets.getInstance().shark_4)};
+			
+			setRandomTexture();
 			
 			// set position of shark
 			sprite.setPosition(xcord, ycord);
@@ -31,6 +34,11 @@ import com.badlogic.gdx.math.Rectangle;
 			
 			active = false;
 			type = ObjectType.SHARK;
+		}
+		
+		public void setRandomTexture() {
+			int i = rand.nextInt(4);
+			sprite = sprites[i];
 		}
 		
 		public Rectangle getShape(){

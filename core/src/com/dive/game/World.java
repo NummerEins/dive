@@ -132,7 +132,7 @@ public class World {
 					o.setAlreadyhit(true);
 					jellyfishhit.play(100f);
 				}
-				System.out.println(o.alreadyhit);
+			//	System.out.println(o.alreadyhit);
 				diver.slow(speed);
 				diver.setBreath(2000);
 			}
