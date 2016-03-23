@@ -48,7 +48,6 @@ import com.badlogic.gdx.math.Rectangle;
 		public void moveObject(float deltaTime, float gameSpeed){
 			//Bewegung des Hais, Hintergrund + eigene Geschwindigkeit
 			sprite.translate(-1920*deltaTime*(gameSpeed+acc[0]), acc[1]*1080*deltaTime);
-			// System.out.println("shark: " + -1920*deltaTime*(gameSpeed+acc[0]));
 			//bewegt Feld hinter dem Hai für Kollisionserkennung
 			shape.setPosition(sprite.getX(), sprite.getY() + sprite.getHeight()*0.18f);
 		}

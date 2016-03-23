@@ -151,6 +151,7 @@ public class ObjectGenerator {
 					break;
 				} else {
 					s.getSprite().setY(minHeightWater+ rand.nextInt(maxHeightWater - minHeightWater));
+					s.getShape().setPosition(s.getSprite().getX(), s.getSprite().getY());
 				}
 				
 			}
@@ -183,7 +184,7 @@ public class ObjectGenerator {
 				e.getSprite()
 						.setY(minHeightWater
 								+ rand.nextInt(maxHeightWater - minHeightWater));
-
+				e.getShape().setPosition(e.getSprite().getX(), e.getSprite().getY());
 			}
 	}
 	}
@@ -217,7 +218,7 @@ public class ObjectGenerator {
 				e.getSprite()
 						.setY(minHeightWater
 								+ rand.nextInt(maxHeightWater - minHeightWater));
-
+				e.getShape().setPosition(e.getSprite().getX(), e.getSprite().getY());
 			}
 		}
 	}
@@ -245,6 +246,7 @@ public class ObjectGenerator {
 				list.remove(p);
 				p.reset();
 				p.getSprite().setX(1920);
+				p.getShape().setX(1920);
 			}
 		}
 
@@ -293,6 +295,7 @@ public class ObjectGenerator {
 				list.remove(p);
 				p.reset();
 				p.getSprite().setX(1920);
+				p.getShape().setX(1920);
 			}
 		}
 
@@ -323,6 +326,7 @@ public class ObjectGenerator {
 				b.reset();
 				b.getSprite().setX(1920);
 				b.getSprite().setY(920);
+				b.getShape().setPosition(b.getSprite().getX(), b.getSprite().getY());
 				// System.out.println(b.sprite.getY());
 			}
 		}
@@ -401,6 +405,7 @@ public class ObjectGenerator {
 				g.setActive(false);
 				list.remove(g);
 				g.getSprite().setX(1920);
+				g.getShape().setX(g.getSprite().getX());
 			}
 		}
 

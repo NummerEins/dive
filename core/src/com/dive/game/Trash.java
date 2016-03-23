@@ -36,7 +36,7 @@ public class Trash extends GameObject {
 		sprite.setPosition(xcord, ycord);
 		
 		// rectangle behind sprite to detect collisions
-		shape = new Rectangle(0f, sprite.getY(), sprite.getWidth(),
+		shape = new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(),
 				sprite.getHeight());
 		
 		//assign other attributes
