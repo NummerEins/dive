@@ -3,6 +3,7 @@ package com.dive.game.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.dive.game.DiveGame;
+import com.dive.game.Platform;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -13,7 +14,7 @@ public class DesktopLauncher {
 		config.width = 1920;
 		config.height = 1080;
 		
-		new LwjglApplication(new DiveGame(), config);
+		new LwjglApplication(new DiveGame(Platform.DESKTOP), config);
 	}
 }
 
