@@ -239,8 +239,8 @@ public class ObjectGenerator {
 
 			Rock r = listRocks[pointerRock];
 			for (int k = 0; k < 10; k++) {
-				if ((!overlap(r.getSprite().getWidth(), r.getSprite().getX(), listGasBottles)) &&
-						!(overlap(r.getSprite().getHeight(), r.getSprite().getY(), listTrash))) {
+				if ((!overlap( r.getSprite().getHeight(), r.getSprite().getY(), listGasBottles)) &&
+						!(overlap( r.getSprite().getHeight(), r.getSprite().getY(), listTrash))) {
 					list.add(listRocks[pointerRock]);
 					listRocks[pointerRock].active = true;
 
@@ -329,7 +329,7 @@ public class ObjectGenerator {
 					if (distance < 100) {
 						countDownTrash = 2 + maxCountDown + 2* rand.nextFloat() - (float) 0.02 * distance;
 					} else {
-						countDownTrash = 1 + maxCountDown + 2* rand.nextFloat();
+						countDownTrash = maxCountDown + 2* rand.nextFloat();
 					}
 
 					break;
@@ -392,11 +392,13 @@ public class ObjectGenerator {
 
 		for (GameObject o : GameObjects) {
 			if (1920 < o.getSprite().getX() + o.getSprite().getWidth()
-					&& y < o.getSprite().getY() + o.getSprite().getHeight()
+					&& y <= o.getSprite().getY() + o.getSprite().getHeight()
 					&& y + height >= o.getSprite().getY()) {
+				System.out.println("true");
 				return (true);
 			}
 		}
+		System.out.println("false");
 		return (false);
 	}
 
