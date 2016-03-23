@@ -178,7 +178,4 @@ public class Assets {
 		font_yellow.dispose();
 	}
 
-	//public static void playSound (Sound sound) {
-	//	if (Settings.soundEnabled) sound.play(1);
-	//}
 }

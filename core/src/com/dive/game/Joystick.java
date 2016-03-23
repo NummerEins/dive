@@ -130,7 +130,6 @@ public class Joystick{
 		return this.Checkboxskin;
 	}
 	public void moveForReal(){
-		System.out.println("es ist"+ this.side+",dasss es links ist");
 		if(side){
 			this.side = false;
 		}else{
