@@ -12,7 +12,7 @@ public class Boat extends GameObject{
 	private Sprite[] sprites;
 
 
-	// kreiere Müll und ihr wird das Bild, Größe des Bildes (width,height) und
+	// kreiere Boot und ihr wird das Bild, Größe des Bildes (width,height) und
 	// Koordinaten übergeben
 	public Boat (int xcord) {
 		
@@ -25,7 +25,7 @@ public class Boat extends GameObject{
 		
 		sprite = sprites[0];
 		// set texture, size
-		shape = new Rectangle(0f, sprite.getY(), sprite.getWidth(),
+		shape = new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(),
 				sprite.getHeight());
 
 		reset();
@@ -33,7 +33,7 @@ public class Boat extends GameObject{
 		sprite.setPosition(xcord, ycord);
 		
 		// rectangle behind sprite to detect collisions
-		
+		shape.setPosition(xcord, ycord);
 		
 		
 		//assign other attributes
