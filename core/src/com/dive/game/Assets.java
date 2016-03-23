@@ -124,17 +124,16 @@ public class Assets {
 		jellyfish 		 	= loadTexture("obstacles/qualle.png");
 		plant			 	= loadTexture("obstacles/green-plant.png");
 		rock 			 	= loadTexture("obstacles/Stone.png");
-		joystickup       		= loadTexture("joystick/Joystickup.png");
-		joystickunder    		= loadTexture("joystick/Joystickunder.png");
-		joystickon       		= loadTexture("joystick/Joystickon.png");
-		joystickoff    			= loadTexture("joystick/Joystickoff.png");
+		joystickup       	= loadTexture("joystick/Joystickup.png");
+		joystickunder    	= loadTexture("joystick/Joystickunder.png");
+		joystickon       	= loadTexture("joystick/Joystickon.png");
+		joystickoff    		= loadTexture("joystick/Joystickoff.png");
 		apple 			 	= loadTexture("garbage/apple.png");
 		paper			 	= loadTexture("garbage/garbage.png");
-		oil				= loadTexture("garbage/oil.png");
+		oil					= loadTexture("garbage/oil.png");
 		boat			 	= loadTexture("obstacles/ship.png");
 		cargoShip 			= loadTexture("obstacles/cargo_ship.png");
 		gasBottle 			= loadTexture("obstacles/Tauchflasche.png");
-
 		black			 	= loadTexture("background/black.png");
 		restartButton	 	= loadTexture("gamescreens/restartbutton.png");
 		restartButton_hover	= loadTexture("gamescreens/restartbutton_hover.png");
