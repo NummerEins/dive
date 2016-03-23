@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Rectangle;
 
 	public class Shark extends GameObject{
 		
-		private float x,y;
 		private int sizeShark;
 		private Random rand;
 		private Sprite[] sprites;

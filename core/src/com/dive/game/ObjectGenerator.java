@@ -11,8 +11,6 @@ public class ObjectGenerator {
 	private Jellyfish[] listJellyfish;
 	private GasBottle[] listGasBottles;
 	private Rock[] listRocks;
-	private GameObject[] listGameObjects;
-
 	private float countDownTrash;
 	private float countDownShark;
 	private float countDownPlant;
@@ -38,8 +36,6 @@ public class ObjectGenerator {
 	private int maxNoJellyfish;
 	private int maxNoGasBottle;
 	private int maxNoRock;
-	private int maxNoGameObject;
-
 	// zufällige Schwimmhöhe von Haien mit festem min/max Wert, Pflanzen haben
 	// feste y
 	// Koordinate
@@ -82,8 +78,6 @@ public class ObjectGenerator {
 		listJellyfish = new Jellyfish[maxNoJellyfish];
 		listGasBottles = new GasBottle[maxNoGasBottle];
 		listRocks = new Rock[maxNoRock];
-		listGameObjects = new GameObject[maxNoGameObject];
-
 		// kreiert Liste mit Haien
 		for (int i = 0; i < maxNoShark; i++) {
 			listSharks[i] = new Shark(1920, minHeightWater
