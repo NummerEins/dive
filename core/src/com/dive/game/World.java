@@ -22,6 +22,8 @@ public class World {
 	private Sound gasbottlehit;
 	private Sound boathit;
 	private Sound jellyfishhit;
+	private Sound trashhit;
+	private Sound rockhit;
 	private Sound startup;
 	private boolean infAir;
 	private DiverAnimation diverAnimation;
@@ -49,6 +51,8 @@ public class World {
 		gasbottlehit = Assets.getInstance().gasbottlehit;
 		boathit = Assets.getInstance().boathit;
 		jellyfishhit = Assets.getInstance().jellyfishhit;
+		trashhit = Assets.getInstance().trashhit;
+		rockhit = Assets.getInstance().rockhit;
 		startup = Assets.getInstance().startup;
 		infAir = false;
 		
@@ -91,6 +95,7 @@ public class World {
 		ArrayList<GameObject> collisions = Collision.checkCollision(diver, objects);
 		for(GameObject o: collisions){
 			if(o.getType() == ObjectType.TRASH && !o.isFading()){
+				trashhit.play();
 				o.delete();
 				score+=o.getTrashScore();
 			}
@@ -103,6 +108,7 @@ public class World {
 				state.gameOver();
 				break;
 			}else if (o.getType() == ObjectType.ROCK){
+				rockhit.play();
 				state.gameOver();
 				break;
 			}
