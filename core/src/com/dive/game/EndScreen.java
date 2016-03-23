@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.utils.Align;
 
 public class EndScreen implements InputProcessor {
 	
@@ -17,9 +18,11 @@ public class EndScreen implements InputProcessor {
 	private World world;
 	private BitmapFont font;
 	private boolean[] hovers;
+	private String topAlert, deathReason;
+	private int distance;
 	
 	
-	public EndScreen(GameState state, World world, BitmapFont font){
+	public EndScreen(GameState state, World world, BitmapFont font, SaveGame saveGame){
 		
 		gameState = state;
 		this.world = world;
@@ -32,8 +35,11 @@ public class EndScreen implements InputProcessor {
 		restart.setBounds(560, 200, 800, 155);
 		
 		menu = new Sprite(Assets.getInstance().menuButton);
-		menu.setBounds(560, 405, 800, 155);
+		menu.setBounds(560, 360, 800, 155);
 		
+		topAlert = "GAME OVER";
+		deathReason = "[suddenly died?]";
+		distance = 0;
 		
 	}
 	
@@ -44,14 +50,35 @@ public class EndScreen implements InputProcessor {
 		if(hovers[1]){restart.setTexture(Assets.getInstance().restartButton_hover);}
 		else{restart.setTexture(Assets.getInstance().restartButton);}
 		
+		
+		font.draw(batch, topAlert, 560, 900, 800, Align.center, true);
+		font.draw(batch, "your score:", 560, 850, 800, Align.center, true);
+		font.getData().setScale(4, 4);
+		font.draw(batch, score + "", 560, 800, 800, Align.center, true);
+		font.getData().setScale(1, 1);
+		font.draw(batch, "Unfortunately you " + deathReason + " after " + distance + "m!" , 0, 650, 1920, Align.center, true);
+		font.draw(batch, "Better luck next time..." , 560, 600, 800, Align.center, true);
+		
 		restart.draw(batch);
 		menu.draw(batch);
-		font.draw(batch, Integer.toString(score),1000, 800);
+		
 		
 	}
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+	
+	public void setDistance(float d){
+		distance = (int) d;
+	}
+	
+	public void setReason(String type){
+		if(type == "shark")	{deathReason = "were consumed by a shark";}
+		else if(type == "boat")	{deathReason = "tried to fight a boat";}
+		else if(type == "air")	{deathReason = "forgot to breathe";}
+		else if(type == "rock")	{deathReason = "hit rock bottom";}
+		else{deathReason = "";}
 	}
 	
 	public Sprite getRestart(){

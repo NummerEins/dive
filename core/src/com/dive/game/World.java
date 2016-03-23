@@ -24,6 +24,8 @@ public class World {
 	private Sound jellyfishhit;
 	private Sound startup;
 	private boolean infAir;
+	private String deathReason;
+	
 	private DiverAnimation diverAnimation;
 	public World(ObjectGenerator objectGen, float iniSpeed, GameState state, BitmapFont font, DiverAnimation animation){
 		
@@ -58,7 +60,8 @@ public class World {
 	public void draw(Batch batch){			//Alle Spielobjekte zeichnen
 		for(GameObject o: objects){o.draw(batch);}
 		diver.draw(batch);
-		font.draw(batch, Integer.toString(score),0, 1080);
+		font.draw(batch, Integer.toString(score),20, 1060);
+		font.draw(batch,Integer.toString((int) (2*distance)),20, 1020);
 	}
 	
 	public void move(float deltaTime,float x,float y){
@@ -97,13 +100,16 @@ public class World {
 			if(o.getType() == ObjectType.SHARK){
 				bite.play();
 				state.gameOver();
+				deathReason = "shark";
 				break;
 			}else if(o.getType() == ObjectType.BOAT){
 				boathit.play(20f);
 				state.gameOver();
+				deathReason = "boat";
 				break;
 			}else if (o.getType() == ObjectType.ROCK){
 				state.gameOver();
+				deathReason = "rock";
 				break;
 			}
 			else if(o.getType() == ObjectType.PLANT){
@@ -131,7 +137,7 @@ public class World {
 		//Luft updaten
 		if(diver.getSprite().getY() + diver.getSprite().getHeight()>=950){diver.recover();}
 		if(!infAir){diver.breathe(deltaTime);}
-		if(!diver.hasAir()){state.gameOver();}
+		if(!diver.hasAir()){state.gameOver();deathReason = "air";}
 		
 		//Score verwalten und Spielgeschwindigkeit anpassen
 		distance += 10*speed*deltaTime;
@@ -164,6 +170,14 @@ public class World {
 	
 	public void setInfAir(){
 		infAir = !infAir;
+	}
+	
+	public String getReason(){
+		return deathReason;
+	}
+	
+	public float getDistance(){
+		return distance;
 	}
 
 }

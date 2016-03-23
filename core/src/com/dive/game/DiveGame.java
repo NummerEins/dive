@@ -38,6 +38,8 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	private EndScreen endscreen;
 	private Menu menu;
 	private ScoreScreen highscores;
+	
+	private SaveGame saveGame; //speichert highscores in datei
 
 	private Stage stage;
 	private Joystick joystick;
@@ -79,9 +81,10 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		bb2 = new Sprite(Assets.getInstance().black);
 		
         // Inputverwaltung setzen
-		endscreen = new EndScreen(gameState, world, font);
+		saveGame = new SaveGame();
+		endscreen = new EndScreen(gameState, world, font, saveGame);
 		menu = new Menu(gameState, world);
-		highscores = new ScoreScreen(gameState, world, font);
+		highscores = new ScoreScreen(gameState, world, font, saveGame);
 		processors = new ArrayList<InputProcessor>();
 		processors.add(endscreen);
 		processors.add(stage);
@@ -120,6 +123,8 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			parallax.move(deltaTime);
 		}
 		else if(gameState.getState() == State.ENDSCREEN){
+			endscreen.setDistance(2*world.getDistance());
+			endscreen.setReason(world.getReason());
 			endscreen.setScore(world.getScore());
 		}
 		else if(gameState.getState() == State.HIGHSCORES){
@@ -183,12 +188,12 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 
 	@Override
 	public void pause() {
-		gameState.pause();
+		gameState.toggle();
 	}
 
 	@Override
 	public void resume() {
-		gameState.resume();
+		gameState.toggle();
 	}
 	
 	@Override

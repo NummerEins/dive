@@ -75,7 +75,7 @@ public class SaveGame {
 		//highscores.add(new Score("Baz", 888));
 		Highscores highscores = new Highscores(topten);
 				
-		String location = new String("/home/tonn/Desktop/highscores.json");
+		String location = new String("/home/mi/aiko/highscores.json");
 		
 		SaveGame saveGame = new SaveGame();
 		
