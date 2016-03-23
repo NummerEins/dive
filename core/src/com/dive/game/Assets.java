@@ -109,7 +109,7 @@ public class Assets {
 		backgroundTop    	= loadTexture("background/topBackground.png");
 		background		 	= loadTexture("background/mainBackground.png");
 		diver 			 	= loadTexture("diver/diver.png");
-		shark			 	= loadTexture("Hindernisse/myshark.png");
+		shark			 	= loadTexture("Hindernisse/shark.png");
 		jellyfish 		 	= loadTexture("Hindernisse/qualle.png");
 		plant			 	= loadTexture("Hindernisse/green-plant.png");
 		rock 			 	= loadTexture("Hindernisse/Stone.png");
