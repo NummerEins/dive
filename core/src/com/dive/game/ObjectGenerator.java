@@ -134,7 +134,7 @@ public class ObjectGenerator {
 		// überprüft ob Zeit abgelaufen und Objekt nicht aktiv, schreibt in
 		// Liste um dann gezeichnet zu werden
 		if (countDownShark < 0 && !listSharks[pointerShark].active) {
-
+			
 			Shark s = listSharks[pointerShark];
 			for (int k = 0; k < 10; k++) {
 				if (!overlap(s.getSprite().getHeight(), s.getSprite().getY(),
@@ -207,7 +207,6 @@ public class ObjectGenerator {
 				e.setActive(false);
 				list.remove(e);
 				e.reset();
-				// System.out.println(e.alreadyhit);
 				e.getSprite().setX(1920);
 				e.getSprite()
 						.setY(minHeightWater
@@ -252,7 +251,6 @@ public class ObjectGenerator {
 		// überprüft ob Zeit abgelaufen und Objekt nicht aktiv, schreibt in
 		// Liste um dann gezeichnet zu werden
 		if (countDownRock < 0 && !listRocks[pointerRock].active) {
-System.out.println("in if countdown rock");
 			Rock r = listRocks[pointerRock];
 			for (int k = 0; k < 10; k++) {
 				if (!overlap(r.getSprite().getHeight(), r.getSprite().getY(), listGasBottles)) {
@@ -276,9 +274,7 @@ System.out.println("in if countdown rock");
 					}
 				}
 			}
-			// else {
-			// r.getSprite().setX();
-			// }
+			
 		}
 		// list.add(listRocks[pointerRock]);
 		//
@@ -343,10 +339,6 @@ System.out.println("in if countdown rock");
 		// Liste um dann gezeichnet zu werden
 		if (countDownTrash < 0 && !listTrash[pointerTrash].active) {
 
-			Trash t = listTrash[pointerTrash];
-			for (int k = 0; k < 10; k++) {
-				if (!overlap(t.getSprite().getHeight(), t.getSprite().getY(),
-						listRocks)) {
 			list.add(listTrash[pointerTrash]);
 			listTrash[pointerTrash].active = true;
 
@@ -356,13 +348,6 @@ System.out.println("in if countdown rock");
 						* distance;
 			} else {
 				countDownTrash = 2 * rand.nextFloat();
-			}
-
-			break;
-			} else {
-			t.getSprite().setY(minHeightWater+ rand.nextInt(maxHeightWater -
-			minHeightWater));
-			 }
 			}
 
 		}
@@ -383,7 +368,7 @@ System.out.println("in if countdown rock");
 				e.getSprite()
 						.setY(minHeightWater
 								+ rand.nextInt(maxHeightWater - minHeightWater));
-
+				e.getShape().setPosition(e.getSprite().getX(),e.getSprite().getY());
 			}
 		}
 	}
@@ -428,11 +413,11 @@ System.out.println("in if countdown rock");
 				&& y <= o.getSprite().getY() + o.getSprite().getHeight()
 				&& y + height >= o.getSprite().getY()) 
 			{
-				System.out.println("overlap");
+				
 				return true;
 			}
 		}
-		System.out.println("no overlap");
+
 		return false;
 	}
 
@@ -446,6 +431,7 @@ System.out.println("in if countdown rock");
 		for (Plant p : listPlants) {
 			p.getSprite().setX(-1000);
 			p.getShape().setX(-1000);
+			p.setAlreadyhit(false);
 			p.setActive(true);
 
 		}

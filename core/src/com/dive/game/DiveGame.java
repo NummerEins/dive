@@ -30,7 +30,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	private Parallax parallax;
 	private GameState gameState;
 	private float deltaTime;
-	private BitmapFont font;
+	private BitmapFont font_green, font_yellow;
 	private ArrayList<InputProcessor> processors;
 
 	private float widthScale; //breite der black bars 
@@ -38,6 +38,8 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	private EndScreen endscreen;
 	private Menu menu;
 	private ScoreScreen highscores;
+	
+	private SaveGame saveGame; //speichert highscores in datei
 
 	private Stage stage;
 	private Joystick joystick;
@@ -56,17 +58,18 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		diverAnimation = new DiverAnimation();
 		
 		batch = new SpriteBatch();
-		font = Assets.getInstance().font;
+		font_green = Assets.getInstance().font_green;
+		font_yellow = Assets.getInstance().font_yellow;
 		
 		//Gamelogik der Welt erzeugen 
 		gameState = new GameState(0);
 		newObjects = new ObjectGenerator(8,8,8,8,6,3,3, 0.1f);
 		parallax = new Parallax(0.03f);
-		world = new World(newObjects,0.1f,gameState, font, diverAnimation);
+		world = new World(newObjects,0.1f,gameState, font_green, diverAnimation);
 		
 		//Joystick und Stage erzeugen
 		stage = new Stage();
-		joystick = new Joystick(stage,font);
+		joystick = new Joystick(stage,font_green);
 		joystick.addActors();
 		
 		//Kamera erzeugen
@@ -79,9 +82,10 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		bb2 = new Sprite(Assets.getInstance().black);
 		
         // Inputverwaltung setzen
-		endscreen = new EndScreen(gameState, world, font);
+		saveGame = new SaveGame();
+		endscreen = new EndScreen(gameState, world, font_green,font_yellow, saveGame);
 		menu = new Menu(gameState, world);
-		highscores = new ScoreScreen(gameState, world, font);
+		highscores = new ScoreScreen(gameState, world, font_green, saveGame);
 		processors = new ArrayList<InputProcessor>();
 		processors.add(endscreen);
 		processors.add(stage);
@@ -94,7 +98,8 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	@Override
 	public void dispose() {
 		batch.dispose();
-		font.dispose();
+		font_green.dispose();
+		font_yellow.dispose();
 		world.music.stop();
 		Assets.getInstance().dispose();
 		stage.dispose();
@@ -120,6 +125,8 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			parallax.move(deltaTime);
 		}
 		else if(gameState.getState() == State.ENDSCREEN){
+			endscreen.setDistance(2*world.getDistance());
+			endscreen.setReason(world.getReason());
 			endscreen.setScore(world.getScore());
 		}
 		else if(gameState.getState() == State.HIGHSCORES){
@@ -137,6 +144,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			parallax.draw(batch);
 			if(gameState.getState() == State.GAME || gameState.getState() == State.PAUSE){
 				joystick.getCheckbox().addAction(Actions.fadeOut(1));
+				joystick.getCheckbox1().addAction(Actions.fadeOut(1)); 
 				world.draw(batch);
 			}
 			else if(gameState.getState() == State.ENDSCREEN){
@@ -146,13 +154,19 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			}
 			else if(gameState.getState() == State.HIGHSCORES){
 				highscores.draw(batch);
+				joystick.getCheckbox().addAction(Actions.fadeOut(0.1f));
+				joystick.getCheckbox1().addAction(Actions.fadeOut(0.1f));
+				joystick.getJoystick().addAction(Actions.fadeOut(0.1f));
 			}
 			else if(gameState.getState() == State.MENU){
-				joystick.getCheckbox().addAction(Actions.fadeIn(1)); 
+				joystick.getCheckbox().addAction(Actions.fadeIn(0.1f)); 
+				joystick.getCheckbox1().addAction(Actions.fadeIn(0.1f)); 
 				if(joystick.getCheckbox().isChecked()){
-					joystick.getJoystick().addAction(Actions.fadeOut(1));
+					joystick.getJoystick().addAction(Actions.fadeOut(0.01f));
+					joystick.getCheckbox1().addAction(Actions.fadeOut(0.01f)); 
 				}else{
-					joystick.getJoystick().addAction(Actions.fadeIn(1));
+					joystick.getJoystick().addAction(Actions.fadeIn(0.01f));
+					joystick.getCheckbox1().addAction(Actions.fadeIn(0.01f)); 
 				}
 				menu.draw(batch);
 			}
@@ -183,12 +197,12 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 
 	@Override
 	public void pause() {
-		gameState.pause();
+		gameState.toggle();
 	}
 
 	@Override
 	public void resume() {
-		gameState.resume();
+		gameState.toggle();
 	}
 	
 	@Override
@@ -222,6 +236,14 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		for(InputProcessor p: processors){
 			p.touchDown(screenX, screenY, pointer, button);
 		}
+		if(joystick.getCheckbox1().isChecked() && (gameState.getState() == State.MENU || gameState.getState() == State.MENU)){
+			boolean bumms = joystick.moveCheckbox1();
+			int val1 = bumms? 1 : 0;
+			joystick.getCheckbox1().addAction(Actions.moveTo(1575*val1 + 50, 35));
+			joystick.getJoystick().addAction(Actions.moveTo(-1575*(val1-1) + 50, 35));
+			joystick.moveForReal();
+		}
+
 		return false;
 	}
 	@Override

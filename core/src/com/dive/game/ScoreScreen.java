@@ -9,15 +9,17 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Align;
 
 public class ScoreScreen implements InputProcessor {
 	
 	private Sprite returnMenu;
 	private GameState gameState;
 	private BitmapFont font;
+	private String[] scoreList, nameList;
 	
 	
-	public ScoreScreen(GameState state,World world, BitmapFont font){
+	public ScoreScreen(GameState state,World world, BitmapFont font, SaveGame saveGame){
 		
 		gameState = state;
 		this.font = font;
@@ -25,10 +27,25 @@ public class ScoreScreen implements InputProcessor {
 		returnMenu = new Sprite(Assets.getInstance().menuButton);
 		returnMenu.setBounds(560, 200, 800, 155);
 		
+		Score[] scores = saveGame.loadHighscore(System.getProperty("user.home") + "/highscores.json").get();
+		nameList = new String[10];
+		scoreList = new String[10];
+		
+		int i = 1;
+		for(Score s: scores){
+			nameList[i-1] = i + ". " + s.getName();
+			scoreList[i-1] = Integer.toString(s.getScore());
+			i++;
+		}
+		
 	}
 	
 	public void draw(Batch batch){
 		returnMenu.draw(batch);
+		for(int i=0; i<10;i++){
+			font.draw(batch, nameList[i], 610, 900-(i*50), 450, Align.topLeft, true);
+			font.draw(batch, scoreList[i], 1060, 900-(i*50), 250, Align.topRight, true);
+		}
 	}
 
 	@Override

@@ -46,8 +46,8 @@ public class Trash extends GameObject {
 		scoreOffset = 0;
 		type = ObjectType.TRASH;
 		
-		font.getData().setScale(3, 3);
-		font.setColor(Color.YELLOW);
+		font = Assets.getInstance().font_yellow;
+		font.getData().setScale(0.5f, 0.5f);
 		
 		
 	}
@@ -75,6 +75,7 @@ public class Trash extends GameObject {
 				fading = false;
 				fadeCounter = 0;
 				sprite.setX(-sprite.getWidth()-1);
+				shape.setX(sprite.getX());
 				scoreOffset = 0;
 			}
 			
