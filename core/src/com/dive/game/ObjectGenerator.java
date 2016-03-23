@@ -137,34 +137,28 @@ public class ObjectGenerator {
 			
 			Shark s = listSharks[pointerShark];
 			for (int k = 0; k < 10; k++) {
-				if (!overlap(s.getSprite().getHeight(), s.getSprite().getY(), listTrash)) {
+				if (!overlap(s.getSprite().getHeight(), s.getSprite().getY(),
+						listTrash)) {
 					list.add(listSharks[pointerShark]);
 					listSharks[pointerShark].active = true;
 
 					pointerShark = (pointerShark + 1) % maxNoShark;
 					if (distance < 100) {
-						countDownShark = 2 + 2* rand.nextFloat() - (float) 0.02 * distance;
+						countDownShark = 2 + 2 * rand.nextFloat()
+								- (float) 0.02 * distance;
 					} else {
-						countDownShark =  2* rand.nextFloat();
+						countDownShark = 2 * rand.nextFloat();
 					}
 
 					break;
 				} else {
-					s.getSprite().setY(minHeightWater+ rand.nextInt(maxHeightWater - minHeightWater));
+					s.getSprite().setY(
+							minHeightWater
+									+ rand.nextInt(maxHeightWater
+											- minHeightWater));
 				}
-				
+
 			}
-				
-//			list.add(listSharks[pointerShark]);
-//
-//			listSharks[pointerShark].active = true;
-//			pointerShark = (pointerShark + 1) % maxNoShark;
-//			if (distance < 100) {
-//				countDownShark = maxCountDown + 2 * rand.nextFloat()
-//						- (float) 0.01 * distance;
-//			} else {
-//				countDownShark = 2 * rand.nextFloat();
-//			}
 		}
 
 		// wenn Objekt Bildschirmrand erreicht wird es aus Liste gestrichen, auf
@@ -185,7 +179,7 @@ public class ObjectGenerator {
 								+ rand.nextInt(maxHeightWater - minHeightWater));
 
 			}
-	}
+		}
 	}
 
 	public void nextJellyfish(ArrayList<GameObject> list, float deltaTime) {
@@ -250,39 +244,45 @@ public class ObjectGenerator {
 
 	}
 
-	public void nextRock(ArrayList<GameObject> list, float deltaTime, float distance) {
+	public void nextRock(ArrayList<GameObject> list, float deltaTime,
+			float distance) {
 		countDownRock -= deltaTime;
 
 		// überprüft ob Zeit abgelaufen und Objekt nicht aktiv, schreibt in
 		// Liste um dann gezeichnet zu werden
 		if (countDownRock < 0 && !listRocks[pointerRock].active) {
-
 			Rock r = listRocks[pointerRock];
 			for (int k = 0; k < 10; k++) {
-				if ((!overlap( r.getSprite().getHeight(), r.getSprite().getY(), listGasBottles)) &&
-						!(overlap( r.getSprite().getHeight(), r.getSprite().getY(), listTrash))) {
-					list.add(listRocks[pointerRock]);
-					listRocks[pointerRock].active = true;
+				if (!overlap(r.getSprite().getHeight(), r.getSprite().getY(), listGasBottles)) {
+					
+					System.out.println("in if gasbottles");
+					if (!(overlap(r.getSprite().getHeight(), r.getSprite().getY(), listTrash))) {
+						
+						System.out.println("in if trash");
+						list.add(listRocks[pointerRock]);
+						listRocks[pointerRock].active = true;
 
-					pointerRock = (pointerRock + 1) % maxNoRock;
-					if (distance < 100) {
-						countDownRock = 10 + maxCountDown + 5* rand.nextFloat() - (float) 0.02 * distance;
-					} else {
-						countDownRock = 8 + maxCountDown + 2* rand.nextFloat();
+						pointerRock = (pointerRock + 1) % maxNoRock;
+						if (distance < 100) {
+							countDownRock = 10 + maxCountDown + 5* rand.nextFloat() - (float) 0.02* distance;
+							System.out.println("in third if");
+						} else {
+							countDownRock = 8 + maxCountDown + 2 * rand.nextFloat();
+						}
+
+						break;
 					}
-
-					break;}
-//				 else {
-//					r.getSprite().setX();
-//				}
+				}
 			}
-			list.add(listRocks[pointerRock]);
-
-			listRocks[pointerRock].active = true;
-			pointerRock = (pointerRock + 1) % maxNoRock;
-			countDownRock = 10 + maxCountDown + 5 * rand.nextFloat();
-
+			
 		}
+		// list.add(listRocks[pointerRock]);
+		//
+		// listRocks[pointerRock].active = true;
+		// pointerRock = (pointerRock + 1) % maxNoRock;
+		// countDownRock = 10 + maxCountDown + 5 * rand.nextFloat();
+
+		// }
 
 		for (int i = 0; i < maxNoRock; i++) {
 			Rock p = listRocks[i];
@@ -339,24 +339,16 @@ public class ObjectGenerator {
 		// Liste um dann gezeichnet zu werden
 		if (countDownTrash < 0 && !listTrash[pointerTrash].active) {
 
-			Trash t = listTrash[pointerTrash];
-//			for (int k = 0; k < 10; k++) {
-//				if (!overlap(t.getSprite().getHeight(), t.getSprite().getY(), listSharks)) {
-					list.add(listTrash[pointerTrash]);
-					listTrash[pointerTrash].active = true;
+			list.add(listTrash[pointerTrash]);
+			listTrash[pointerTrash].active = true;
 
-					pointerTrash = (pointerTrash + 1) % maxNoTrash;
-					if (distance < 100) {
-						countDownTrash = 2 + 2* rand.nextFloat() - (float) 0.02 * distance;
-					} else {
-						countDownTrash = 2* rand.nextFloat();
-					}
-
-//					break;
-//				} else {
-//					t.getSprite().setY(minHeightWater+ rand.nextInt(maxHeightWater - minHeightWater));
-//				}
-//			}
+			pointerTrash = (pointerTrash + 1) % maxNoTrash;
+			if (distance < 100) {
+				countDownTrash = 2 + 2 * rand.nextFloat() - (float) 0.02
+						* distance;
+			} else {
+				countDownTrash = 2 * rand.nextFloat();
+			}
 
 		}
 
@@ -386,10 +378,16 @@ public class ObjectGenerator {
 
 		if (countDownGasBottle < 0 && !listGasBottles[pointerGasBottle].active) {
 
+			GasBottle g = listGasBottles[pointerGasBottle];
+			for (int k = 0; k < 10; k++) {
+				if (!overlap(g.getSprite().getHeight(), g.getSprite().getY(), listRocks)) {
 			list.add(listGasBottles[pointerGasBottle]);
 			listGasBottles[pointerGasBottle].active = true;
 			pointerGasBottle = (pointerGasBottle + 1) % maxNoGasBottle;
-			countDownGasBottle = 5 + maxCountDown + 5 * rand.nextFloat();
+			countDownGasBottle = 2 + 2 * rand.nextFloat(); 
+					 break;
+			 }
+			}
 
 		}
 
@@ -411,13 +409,16 @@ public class ObjectGenerator {
 	public boolean overlap(float height, float y, GameObject[] GameObjects) {
 
 		for (GameObject o : GameObjects) {
-			if (1920 < o.getSprite().getX() + o.getSprite().getWidth()
-					&& y <= o.getSprite().getY() + o.getSprite().getHeight()
-					&& y + height >= o.getSprite().getY()) {
-				return (true);
+			if (1920 < o.getSprite().getX() + o.getSprite().getWidth() && o.active == true
+				&& y <= o.getSprite().getY() + o.getSprite().getHeight()
+				&& y + height >= o.getSprite().getY()) 
+			{
+				
+				return true;
 			}
 		}
-		return (false);
+
+		return false;
 	}
 
 	public void reset() {
