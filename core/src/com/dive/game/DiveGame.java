@@ -56,6 +56,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 	}
 	
 
+
 	@Override
 	public void create() {
 		
@@ -250,8 +251,8 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		if(joystick.getCheckbox1().isChecked() && (gameState.getState() == State.MENU || gameState.getState() == State.MENU)){
 			boolean bumms = joystick.moveCheckbox1();
 			int val1 = bumms? 1 : 0;
-			joystick.getCheckbox1().addAction(Actions.moveTo(1575*val1 + 50, 35));
-			joystick.getJoystick().addAction(Actions.moveTo(-1575*(val1-1) + 50, 35));
+			joystick.getCheckbox1().addAction(Actions.moveTo((1575*val1 + 50)*joystick.getSkalar(), 35*joystick.getSkalar()));
+			joystick.getJoystick().addAction(Actions.moveTo((-1575*(val1-1) + 50)*joystick.getSkalar(), 35*joystick.getSkalar()));
 			joystick.moveForReal();
 		}
 

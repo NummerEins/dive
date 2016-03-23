@@ -34,6 +34,8 @@ public class Assets {
 	public Texture rock;
 	public Texture joystickup;
 	public Texture joystickunder;
+	public Texture joystickon;
+	public Texture joystickoff;
 	public Texture apple;
 	public Texture paper;
 	public Texture oil;
@@ -124,9 +126,11 @@ public class Assets {
 		rock 			 	= loadTexture("obstacles/Stone.png");
 		joystickup       	= loadTexture("joystick/Joystickup.png");
 		joystickunder    	= loadTexture("joystick/Joystickunder.png");
+		joystickon       	= loadTexture("joystick/Joystickon.png");
+		joystickoff    		= loadTexture("joystick/Joystickoff.png");
 		apple 			 	= loadTexture("garbage/apple.png");
 		paper			 	= loadTexture("garbage/garbage.png");
-		oil				 	= loadTexture("garbage/oil.png");
+		oil					= loadTexture("garbage/oil.png");
 		boat			 	= loadTexture("obstacles/ship.png");
 		can 			 	= loadTexture("garbage/can.png");
 		cargoShip 			= loadTexture("obstacles/cargo_ship.png");
