@@ -32,6 +32,16 @@ public class Plant extends GameObject {
 
 	}
 	
+	public void setAlreadyhit(boolean bumms) {
+		this.alreadyhit = bumms;
+		
+	}
+
+	public boolean getAlreadyhit() {
+		
+		return this.alreadyhit;
+	}
+	
 	public void reset(){
 		sizePlant = 70 + rand.nextInt(90);
 		alreadyhit = false;

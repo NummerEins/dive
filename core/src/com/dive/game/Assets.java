@@ -60,7 +60,11 @@ public class Assets {
 	public Sound gasbottlehit;
 	public Sound boathit;
 	public Sound jellyfishhit;
+	public Sound trashhit;
+	public Sound rockhit;
+	public Sound planthit;
 	public Sound startup;
+	
 	
 	//misc
 	public BitmapFont font;
@@ -135,8 +139,11 @@ public class Assets {
 		gasbottlehit	 	= loadSound("sounds/Gasbottlehit.wav");
 		boathit			 	= loadSound("sounds/Boathit.wav");
 		jellyfishhit	 = loadSound("sounds/Jellyfishhit.wav");
+		rockhit			 = loadSound("sounds/Rockhit.mp3");
+		trashhit		 = loadSound("sounds/Trashhit.wav");
+		planthit		 = loadSound("sounds/Planthit.wav");
 		startup			 = loadSound("sounds/Startup.wav");
-		font 			 = new BitmapFont(Gdx.files.internal("fonts/StS.fnt"));
+		font 			 = new BitmapFont(Gdx.files.internal("fonts//customFontsGreen/customFont.fnt"));
 		animation 		 = loadTexture("spritesheet/spritesheet.png");
 		
 	}
@@ -152,7 +159,7 @@ public class Assets {
 			t.dispose();
 		}
 		// dispose Sounds
-		Sound[] sounds = new Sound[]{bite, gasbottlehit, boathit, startup, jellyfishhit};
+		Sound[] sounds = new Sound[]{bite, gasbottlehit, boathit, startup, jellyfishhit, trashhit, rockhit, planthit};
 		for(Sound s:sounds){
 			s.dispose();
 		}
