@@ -80,14 +80,14 @@ public class World {
 		diver.refresh(speed);
 		
 		//Level aufbauen
-		objectGen.nextRock(objects, deltaTime, distance);
 		objectGen.nextPlant(objects, deltaTime);
-		objectGen.nextShark(objects, deltaTime, distance);
+		
 		objectGen.nextTrash(objects, deltaTime, distance);
+		objectGen.nextShark(objects, deltaTime, distance);
 		objectGen.nextBoat(objects, deltaTime);
 		objectGen.nextJellyfish(objects, deltaTime);
 		objectGen.nextGasBottle(objects, deltaTime);
-		
+		objectGen.nextRock(objects, deltaTime, distance);
 
 		
 		
