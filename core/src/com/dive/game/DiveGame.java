@@ -72,7 +72,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 		gameState = new GameState(0);
 		newObjects = new ObjectGenerator(8,8,8,8,6,3,3, 0.1f);
 		parallax = new Parallax(0.03f);
-		world = new World(newObjects,0.1f,gameState, font_green, diverAnimation);
+		world = new World(newObjects,0.1f,gameState, font_green, font_yellow, diverAnimation);
 		
 		//Joystick und Stage erzeugen
 		stage = new Stage();
@@ -136,7 +136,7 @@ public class DiveGame extends ApplicationAdapter implements InputProcessor,Appli
 			parallax.move(deltaTime);
 		}
 		else if(gameState.getState() == State.ENDSCREEN){
-			endscreen.setDistance(2*world.getDistance());
+			endscreen.setDistance(world.getDistance());
 			endscreen.setReason(world.getReason());
 			endscreen.setScore(world.getScore());
 		}

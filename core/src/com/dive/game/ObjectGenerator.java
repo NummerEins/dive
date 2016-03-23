@@ -252,17 +252,17 @@ public class ObjectGenerator {
 			for (int k = 0; k < 10; k++) {
 				if (!overlap(r.getSprite().getHeight(), r.getSprite().getY(), listGasBottles)) {
 					
-					System.out.println("in if gasbottles");
+					//System.out.println("in if gasbottles");
 					if (!(overlap(r.getSprite().getHeight(), r.getSprite().getY(), listTrash))) {
 						
-						System.out.println("in if trash");
+						//System.out.println("in if trash");
 						list.add(listRocks[pointerRock]);
 						listRocks[pointerRock].active = true;
 
 						pointerRock = (pointerRock + 1) % maxNoRock;
 						if (distance < 100) {
 							countDownRock = 10 + maxCountDown + 5* rand.nextFloat() - (float) 0.02* distance;
-							System.out.println("in third if");
+							//System.out.println("in third if");
 						} else {
 							countDownRock = 8 + maxCountDown + 2 * rand.nextFloat();
 						}
@@ -273,13 +273,6 @@ public class ObjectGenerator {
 			}
 			
 		}
-		// list.add(listRocks[pointerRock]);
-		//
-		// listRocks[pointerRock].active = true;
-		// pointerRock = (pointerRock + 1) % maxNoRock;
-		// countDownRock = 10 + maxCountDown + 5 * rand.nextFloat();
-
-		// }
 
 		for (int i = 0; i < maxNoRock; i++) {
 			Rock p = listRocks[i];
@@ -363,6 +356,7 @@ public class ObjectGenerator {
 				t.setActive(false);
 				list.remove(t);
 				t.setRandomTexture();
+				t.getShape().setSize(t.getSprite().getWidth(), t.getSprite().getHeight());
 				t.getSprite().setX(1920);
 				t.getSprite()
 						.setY(minHeightWater
