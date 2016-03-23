@@ -2,7 +2,6 @@ package com.dive.game;
 
 import java.util.Random;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
@@ -36,7 +35,7 @@ public class Trash extends GameObject {
 		sprite.setPosition(xcord, ycord);
 		
 		// rectangle behind sprite to detect collisions
-		shape = new Rectangle(0f, sprite.getY(), sprite.getWidth(),
+		shape = new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(),
 				sprite.getHeight());
 		
 		//assign other attributes

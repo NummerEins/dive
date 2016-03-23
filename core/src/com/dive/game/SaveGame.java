@@ -1,8 +1,10 @@
 package com.dive.game;
 
 import com.dive.game.Score;
+import com.dive.game.Platform;
 import com.dive.game.Highscores;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,11 +16,30 @@ public class SaveGame {
 
 	// TODO: Change topten to private
 	private Json serializer;
+	private Platform platform;
 	
 	public SaveGame()
 	{
 		serializer = new Json();
 		serializer.setIgnoreUnknownFields(false);
+		platform = Platform.HTML;
+	}
+	
+	public SaveGame(Platform platform)
+	{
+		serializer = new Json();
+		serializer.setIgnoreUnknownFields(false);
+		this.platform = platform;
+	}
+	
+	public String getSaveLocation() {
+		String location = new String();
+		
+		if (platform == Platform.DESKTOP) {
+			location = System.getProperty("user.home") + File.separator +"highscores.json";
+		}
+		
+		return location;
 	}
 	
 	public void dumpHighscores(Highscores highscores) {
@@ -26,6 +47,10 @@ public class SaveGame {
 	}
 	
 	public void saveHighscore(String location, Highscores highscores) {
+		
+		if (platform == Platform.HTML || platform == Platform.ANDROID) {
+			return;
+		}  
 		
 		// Only save the set highscores, not the default-constructed ones
 		String output = serializer.toJson(highscores.get(highscores.size()));
@@ -43,6 +68,14 @@ public class SaveGame {
 	}
 	
 	public Highscores loadHighscore(String location) {
+		
+		if (platform == Platform.HTML) {
+			return new Highscores();
+		} 
+		
+		if (platform == Platform.ANDROID) {
+			return new Highscores();
+		}  
 		
 		// TODO: Exception handling
 		

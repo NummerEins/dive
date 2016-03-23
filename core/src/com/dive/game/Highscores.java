@@ -1,9 +1,7 @@
 package com.dive.game;
 
 import com.dive.game.Score;
-import java.util.Stack;
 import java.util.PriorityQueue;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class Highscores {

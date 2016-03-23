@@ -22,7 +22,7 @@ public class EndScreen implements InputProcessor {
 	private int distance;
 	
 	
-	public EndScreen(GameState state, World world, BitmapFont font_green, BitmapFont font_yellow, SaveGame saveGame){
+	public EndScreen(GameState state, World world, BitmapFont font_green, BitmapFont font_yellow, Highscores scores){
 		
 		gameState = state;
 		this.world = world;
