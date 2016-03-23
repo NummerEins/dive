@@ -24,7 +24,7 @@ public class Trash extends GameObject {
 
 		// array with sprites to choose from set of random textures
 		sprites = new Sprite[] { new Sprite(Assets.getInstance().apple),
-				new Sprite(Assets.getInstance().paper) , new Sprite(Assets.getInstance().oil), new Sprite (Assets.getInstance().can) , new Sprite (Assets.getInstance().can)};
+				new Sprite(Assets.getInstance().paper) , new Sprite(Assets.getInstance().oil), new Sprite (Assets.getInstance().apple) , new Sprite (Assets.getInstance().can)};
 		// apple 7 pts, paper 5 pts, oil 15 pts, can 12 pts
 		listTrashScore = new int[]{7,5,15, 12, 12};
 		

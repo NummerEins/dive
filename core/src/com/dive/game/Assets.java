@@ -132,6 +132,7 @@ public class Assets {
 		paper			 	= loadTexture("garbage/garbage.png");
 		oil					= loadTexture("garbage/oil.png");
 		boat			 	= loadTexture("obstacles/ship.png");
+		can 			 	= loadTexture("garbage/can.png");
 		cargoShip 			= loadTexture("obstacles/cargo_ship.png");
 		gasBottle 			= loadTexture("obstacles/Tauchflasche.png");
 		black			 	= loadTexture("background/black.png");
