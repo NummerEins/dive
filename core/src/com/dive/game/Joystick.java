@@ -1,9 +1,9 @@
 package com.dive.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -37,9 +37,11 @@ public class Joystick{
 	private Stage stage;
 	private boolean side;
 	private int val;
+	private float skalar;
 	
 	public Joystick(Stage stage, BitmapFont font){
 		
+		this.skalar = (float)Gdx.graphics.getWidth()/1920f;
 		table = new Table();
 		this.stage = stage;
 
@@ -53,26 +55,25 @@ public class Joystick{
     	this.joystickstyle = new TouchpadStyle(background,knob);
     	
     	
-		this.knob.setMinWidth(175);						//Größe des Joysticks
-		this.knob.setMinHeight(175);
+		this.knob.setMinWidth(175f*skalar);						//Größe des Joysticks
+		this.knob.setMinHeight(175f*skalar);
 		
 		this.joystick = new Touchpad(5,joystickstyle);	//Joystick wird erstellt mit Bewegungsradius des Knüppels = 1/10 des Bildschirms
-		this.joystick.setBounds(-1575*(val-1) + 50,  35 ,250, 250);//Größe und Platzierung des Joystickpads
+		this.joystick.setBounds((-1575f*(val-1) + 50)*skalar,  35*skalar ,250*skalar, 250*skalar);//Größe und Platzierung des Joystickpads
     	
 		
     	this.Checkboxskin = new Skin();	//Ein Skin wird erzeugt um aus Texture Dateien Drawables zu machen
-		this.Checkboxskin.add("checkboxOff",Assets.getInstance().joystickunder);
-    	this.Checkboxskin.add("checkboxOn",Assets.getInstance().joystickup);
+		this.Checkboxskin.add("checkboxOff",Assets.getInstance().joystickon);
+    	this.Checkboxskin.add("checkboxOn",Assets.getInstance().joystickoff);
 		this.checkboxOff = Checkboxskin.getDrawable("checkboxOff");
     	this.checkboxOn = Checkboxskin.getDrawable("checkboxOn");
-    	
-    	
+    
     	this.touch = font;
     	this.color = Color.BLACK;
     	
     	this.checkboxstyle= new CheckBoxStyle(this.checkboxOn,this.checkboxOff,this.touch,this.color);
 		this.checkbox = new CheckBox("",this.checkboxstyle);
-		this.checkbox.setBounds(1850, 900, 100, 100);
+		this.checkbox.setBounds(1575*skalar, 900*skalar, 300*skalar, 50*skalar);
 		
 		this.Checkboxskin1 = new Skin();	//Ein Skin wird erzeugt um aus Texture Dateien Drawables zu machen
 		this.Checkboxskin1.add("checkboxOff",Assets.getInstance().joystickunder);
@@ -80,21 +81,14 @@ public class Joystick{
 		this.checkboxOff1 = Checkboxskin1.getDrawable("checkboxOff");
     	this.checkboxOn1 = Checkboxskin1.getDrawable("checkboxOn");
     	
-    	
     	this.touch1 = font;
     	this.checkboxstyle1= new TextButtonStyle(checkboxOn1,checkboxOff1,checkboxOn1, touch1);
 		this.checkbox1 = new TextButton("",this.checkboxstyle1);
-		this.checkbox1.setBounds(1575*val + 50, 35, 250, 250);
-	
-
+		this.checkbox1.setBounds((1575*val + 50)*skalar, 35*skalar, 250*skalar, 250*skalar);
 	
 	}
-	public Joystick(boolean bumms){
-		this.side = bumms;
-		int val1 = side? 1 : 0;
-		this.val = val1;
-		checkbox1.addAction(Actions.moveTo(1575*val + 50, 35));
-		joystick.addAction(Actions.moveTo(-1575*(val-1) + 50, 35));
+	public Float getSkalar(){
+		return this.skalar;
 	}
 	public Joystick(){
 		this.side=true;

@@ -28,9 +28,10 @@ public class World {
 	private Sound startup;
 	private boolean infAir;
 	private String deathReason;
+	private Highscores scores;
 	
 	private DiverAnimation diverAnimation;
-	public World(ObjectGenerator objectGen, float iniSpeed, GameState state, BitmapFont font_green, BitmapFont font_yellow, DiverAnimation animation){
+	public World(ObjectGenerator objectGen, float iniSpeed, GameState state, BitmapFont font_green, BitmapFont font_yellow, DiverAnimation animation,Highscores scores){
 		
 		objects = new ArrayList<GameObject>();
 		speed = iniSpeed;
@@ -41,6 +42,7 @@ public class World {
 		this.state = state;
 		this.font_green = font_green;
 		this.font_yellow = font_yellow;
+		this.scores = scores;
 		
 		diverAnimation = animation;
 
@@ -154,6 +156,9 @@ public class World {
 		speed = (float) (0.001*distance+0.1);
 		speed = (float) Math.min(speed, 1);
 		
+		if(state.getState() == State.ENDSCREEN){
+			scores.add(new Score("Test",score));
+		}
 		
 	}
 	

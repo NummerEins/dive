@@ -34,6 +34,8 @@ public class Assets {
 	public Texture rock;
 	public Texture joystickup;
 	public Texture joystickunder;
+	public Texture joystickon;
+	public Texture joystickoff;
 	public Texture apple;
 	public Texture paper;
 	public Texture oil;
@@ -124,9 +126,11 @@ public class Assets {
 		rock 			 	= loadTexture("obstacles/Stone.png");
 		joystickup       	= loadTexture("joystick/Joystickup.png");
 		joystickunder    	= loadTexture("joystick/Joystickunder.png");
+		joystickon       	= loadTexture("joystick/Joystickon.png");
+		joystickoff    		= loadTexture("joystick/Joystickoff.png");
 		apple 			 	= loadTexture("garbage/apple.png");
 		paper			 	= loadTexture("garbage/garbage.png");
-		oil				 	= loadTexture("garbage/oil.png");
+		oil					= loadTexture("garbage/oil.png");
 		boat			 	= loadTexture("obstacles/ship.png");
 		can 			 	= loadTexture("garbage/can.png");
 		cargoShip 			= loadTexture("obstacles/cargo_ship.png");
@@ -140,7 +144,7 @@ public class Assets {
 		menuButton_hover 	= loadTexture("gamescreens/menubutton_hover.png");
 		highscoreButton		= loadTexture("gamescreens/highscorebutton.png");
 		highscoreButton_hover=loadTexture("gamescreens/highscorebutton_hover.png");
-		gameOver			=loadTexture("gamescreens/gameOver.png");
+//		gameOver			=loadTexture("gamescreens/gameOver.png");
 		air				 	= loadTexture("air/air.png");
 		air_green		 	= loadTexture("air/green.png");
 		air_orange		 	= loadTexture("air/orange.png");
@@ -149,14 +153,14 @@ public class Assets {
 		bite 			 	= loadSound("sounds/Bite.wav");
 		gasbottlehit	 	= loadSound("sounds/Gasbottlehit.wav");
 		boathit			 	= loadSound("sounds/Boathit.wav");
-		jellyfishhit	 	= loadSound("sounds/Jellyfishhit.wav");
-		rockhit				= loadSound("sounds/Rockhit.mp3");
-		trashhit		 	= loadSound("sounds/Trashhit.wav");
-		planthit		 	= loadSound("sounds/Planthit.wav");
-		startup			 	= loadSound("sounds/Startup.wav");
-		font_green		 	= new BitmapFont(Gdx.files.internal("fonts//customFontsGreen/customFont.fnt"));
-		font_yellow		 	= new BitmapFont(Gdx.files.internal("fonts//customFontsYellow/customFont.fnt"));
-		animation 		 	= loadTexture("spritesheet/spritesheet.png");
+		jellyfishhit	 = loadSound("sounds/Jellyfishhit.wav");
+		rockhit			 = loadSound("sounds/Rockhit.mp3");
+		trashhit		 = loadSound("sounds/Trashhit.wav");
+		planthit		 = loadSound("sounds/Planthit.wav");
+		startup			 = loadSound("sounds/Startup.wav");
+		font_green		 = new BitmapFont(Gdx.files.internal("fonts/customFontsGreen/customFont.fnt"));
+		font_yellow		 = new BitmapFont(Gdx.files.internal("fonts/customFontsYellow/customFont.fnt"));
+		animation 		 = loadTexture("spritesheet/spritesheet.png");
 		
 	}
 
@@ -166,7 +170,7 @@ public class Assets {
 										gasBottle, jellyfish, joystickup, joystickunder, apple, paper, oil, can, air,
 										air_green,air_orange,air_red, black,restartButton,restartButton_hover,
 										startButton,startButton_hover, menuButton, menuButton_hover, highscoreButton,
-										highscoreButton_hover, gameOver};
+										highscoreButton_hover};
 		for(Texture t:tex){
 			t.dispose();
 		}
