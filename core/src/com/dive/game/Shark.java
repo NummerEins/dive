@@ -55,7 +55,7 @@ import com.badlogic.gdx.math.Rectangle;
 	public void reset(){
 		sizeShark = 100 + rand.nextInt(120);
 		sprite.setSize((float) 1.5*sizeShark, sizeShark);
-		shape.setSize(sprite.getWidth(), sprite.getHeight()*0.5f);
+		shape.setSize(sprite.getWidth()*0.9f, sprite.getHeight()*0.5f);
 		shape.setPosition(sprite.getX(), sprite.getY() + sprite.getHeight()*0.18f);
 	}
 	
