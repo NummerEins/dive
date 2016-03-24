@@ -138,7 +138,7 @@ public class Assets {
 		boat			 	= loadTexture("obstacles/ship.png");
 		can 			 	= loadTexture("garbage/can.png");
 		cargoShip 			= loadTexture("obstacles/cargo_ship.png");
-		gasBottle 			= loadTexture("obstacles/Tauchflasche.png");
+		gasBottle 			= loadTexture("obstacles/tauchflasche.png");
 		black			 	= loadTexture("background/black.png");
 		restartButton	 	= loadTexture("gamescreens/restartbutton.png");
 		restartButton_hover	= loadTexture("gamescreens/restartbutton_hover.png");
