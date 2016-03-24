@@ -144,7 +144,7 @@ public class Assets {
 		menuButton_hover 	= loadTexture("gamescreens/menubutton_hover.png");
 		highscoreButton		= loadTexture("gamescreens/highscorebutton.png");
 		highscoreButton_hover=loadTexture("gamescreens/highscorebutton_hover.png");
-		gameOver			=loadTexture("gamescreens/gameOver.png");
+		//gameOver			=loadTexture("gamescreens/gameOver.png");
 		air				 	= loadTexture("air/air.png");
 		air_green		 	= loadTexture("air/green.png");
 		air_orange		 	= loadTexture("air/orange.png");
