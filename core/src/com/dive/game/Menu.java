@@ -30,8 +30,8 @@ public class Menu implements InputProcessor {
 		highscores = new Sprite(Assets.getInstance().highscoreButton);
 		highscores.setBounds(560, 405, 800, 155);
 		
-		logo = new Sprite(Assets.getInstance().diver);
-		logo.setBounds(460, 560, 1000, 400);
+		logo = new Sprite(Assets.getInstance().logo);
+		logo.setBounds(700, 570, 500, 450);
 		
 		
 	}
