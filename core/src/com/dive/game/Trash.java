@@ -100,7 +100,7 @@ public class Trash extends GameObject {
 		if(i==3 || i == 4){
 			sprite.setSize(0.7f*sizeTrash, sizeTrash);
 		}
-		if(i == 0 || i == 1){ sprite.setSize(sizeTrash, sizeTrash);}
+		if(i == 0 || i == 1){ sprite.setSize(sizeTrash-10, sizeTrash-10);}
 	}
 	
 	public void delete(){
