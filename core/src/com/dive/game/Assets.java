@@ -54,6 +54,7 @@ public class Assets {
 	public Texture highscoreButton;
 	public Texture highscoreButton_hover;
 	public Texture gameOver;
+	public Texture howToPlay;
 	
 	//air
 	public Texture air;
@@ -78,6 +79,9 @@ public class Assets {
 	public BitmapFont font_yellow;
 	public Texture animation;
 	public Texture black;
+	
+	//logo
+	public Texture logo;
 	
 	protected Assets() {
 		// Empty constructor
@@ -123,11 +127,11 @@ public class Assets {
 		shark_4			 	= loadTexture("obstacles/shark3.png");
 		jellyfish 		 	= loadTexture("obstacles/qualle.png");
 		plant			 	= loadTexture("obstacles/green-plant.png");
-		rock 			 	= loadTexture("obstacles/Stone.png");
-		joystickup       	= loadTexture("joystick/Joystickup.png");
-		joystickunder    	= loadTexture("joystick/Joystickunder.png");
-		joystickon       	= loadTexture("joystick/Joystickon.png");
-		joystickoff    		= loadTexture("joystick/Joystickoff.png");
+		rock 			 	= loadTexture("obstacles/stone.png");
+		joystickup       	= loadTexture("joystick/joystickup.png");
+		joystickunder    	= loadTexture("joystick/joystickunder.png");
+		joystickon       	= loadTexture("joystick/joystickon.png");
+		joystickoff    		= loadTexture("joystick/joystickoff.png");
 		apple 			 	= loadTexture("garbage/apple.png");
 		paper			 	= loadTexture("garbage/garbage.png");
 		oil					= loadTexture("garbage/oil.png");
@@ -144,7 +148,8 @@ public class Assets {
 		menuButton_hover 	= loadTexture("gamescreens/menubutton_hover.png");
 		highscoreButton		= loadTexture("gamescreens/highscorebutton.png");
 		highscoreButton_hover=loadTexture("gamescreens/highscorebutton_hover.png");
-//		gameOver			=loadTexture("gamescreens/gameOver.png");
+		gameOver			=loadTexture("gamescreens/gameOver.png");
+		howToPlay			=loadTexture("gamescreens/howToPlay.png");
 		air				 	= loadTexture("air/air.png");
 		air_green		 	= loadTexture("air/green.png");
 		air_orange		 	= loadTexture("air/orange.png");
@@ -161,6 +166,7 @@ public class Assets {
 		font_green		 = new BitmapFont(Gdx.files.internal("fonts/customFontsGreen/customFont.fnt"));
 		font_yellow		 = new BitmapFont(Gdx.files.internal("fonts/customFontsYellow/customFont.fnt"));
 		animation 		 = loadTexture("spritesheet/spritesheet.png");
+		logo			 = loadTexture("logo/logoWeb.png");
 		
 	}
 
@@ -170,7 +176,7 @@ public class Assets {
 										gasBottle, jellyfish, joystickup, joystickunder, apple, paper, oil, can, air,
 										air_green,air_orange,air_red, black,restartButton,restartButton_hover,
 										startButton,startButton_hover, menuButton, menuButton_hover, highscoreButton,
-										highscoreButton_hover};
+										highscoreButton_hover, gameOver, howToPlay, logo};
 		for(Texture t:tex){
 			t.dispose();
 		}
