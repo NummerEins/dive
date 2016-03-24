@@ -61,7 +61,8 @@ public class Highscores {
 		String output = new String();
 		for (Score elem : get(size())) {
 			// Apparently, %%n indicates a platform independent newline in Java
-			output += String.format(elem.toString() + System.lineSeparator());
+			//output += String.format(elem.toString()  + System.lineSeparator());
+			output += (elem.toString() + " ");
 		}
 		return output;
 	}

@@ -331,15 +331,19 @@ public class ObjectGenerator {
 		// Liste um dann gezeichnet zu werden
 		if (countDownTrash < 0 && !listTrash[pointerTrash].active) {
 
-			list.add(listTrash[pointerTrash]);
-			listTrash[pointerTrash].active = true;
-
-			pointerTrash = (pointerTrash + 1) % maxNoTrash;
-			if (distance < 100) {
-				countDownTrash = 2 + 2 * rand.nextFloat() - (float) 0.02
-						* distance;
-			} else {
-				countDownTrash = 2 * rand.nextFloat();
+			Trash t = listTrash[pointerTrash];
+			for (int k = 0; k < 10; k++) {
+				if (!overlap(t.getSprite().getHeight(), t.getSprite().getY(), listRocks)) {
+					list.add(listTrash[pointerTrash]);
+					listTrash[pointerTrash].active = true;
+					pointerTrash = (pointerTrash + 1) % maxNoTrash;
+						if (distance < 100) {
+								countDownTrash = 2 + 2 * rand.nextFloat() - (float) 0.02* distance;
+						} else {
+							countDownTrash = 2 * rand.nextFloat();
+						}
+					break;
+			 }
 			}
 
 		}
@@ -377,7 +381,7 @@ public class ObjectGenerator {
 			list.add(listGasBottles[pointerGasBottle]);
 			listGasBottles[pointerGasBottle].active = true;
 			pointerGasBottle = (pointerGasBottle + 1) % maxNoGasBottle;
-			countDownGasBottle = 2 + 2 * rand.nextFloat(); 
+			countDownGasBottle = 8 + 2 * rand.nextFloat(); 
 					 break;
 			 }
 			}
